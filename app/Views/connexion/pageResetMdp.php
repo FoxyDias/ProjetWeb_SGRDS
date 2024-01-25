@@ -11,7 +11,7 @@
         </div>
 
         <!-- formulaire -->
-        <form class="bg-white w-full max-w-sm rounded-[12px] border-gray-500 border-4 py-7 px-4">
+        <form class="bg-white w-full max-w-sm rounded-[12px] border-gray-500 border-2 shadow-xl py-7 px-4">
 
             <!-- mot de passe -->
             <div class="md:flex md:items-center mb-6">
