@@ -48,7 +48,7 @@
         <!-- mdp oublie -->
         <div class="flex flex-col items-center">
             <div class="h-full flex">
-            <a class="inline-block text-sm text-gray-500 align-baseline hover:text-gray-800" href="#">
+            <a class="inline-block text-sm text-gray-500 align-baseline hover:text-gray-800" href="./mdpoublie">
                 Mot de passe oublié ?
             </a>
         </div>
