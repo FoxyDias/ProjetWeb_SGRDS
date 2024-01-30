@@ -20,6 +20,6 @@ CREATE TABLE rattrapages_sgrds (
 -- Rattrapage 1
 
 INSERT INTO rattrapages_sgrds (etatRat, dateRat, salleRat, typeRat, commRat, dureeRat, idDevoir) VALUES
-('En attente', '2024-04-05', '715', 'Machine', 'Rattrapage de la matière', '1h00', 1);
-('En attente', '2024-05-06', '619', 'Papier', 'Rattrapage de la matière', '1h00', 3);
+('En attente', '2024-04-05', '715', 'Machine', 'Rattrapage de la matière', '1h00', 1),
+('En attente', '2024-05-06', '619', 'Papier', 'Rattrapage de la matière', '1h00', 3),
 ('En attente', '2023-12-12', '712', 'Machine', 'Rattrapage de la matière', '3h00', 2);
