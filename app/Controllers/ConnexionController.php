@@ -7,7 +7,9 @@ class ConnexionController extends BaseController
     public function index()
     {
         helper(['form']);
+        echo view('communs/enTete', $data = ['titre' => 'Connexion']);
         echo view('connexion/pageConnexion');
+        echo view('communs/basDePage');
     }
     public function loginAuth()
     {
