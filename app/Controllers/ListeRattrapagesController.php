@@ -1,6 +1,7 @@
 <?php
 namespace App\Controllers;
 use App\Models\RattrapageModel;
+use App\Models\DevoirModel;
 use CodeIgniter\Controller;
 
 class ListeRattrapagesController extends BaseController
@@ -10,10 +11,44 @@ class ListeRattrapagesController extends BaseController
         helper(['form']);
 
         $modele_Rattrapage = new RattrapageModel();
-        $rattrapages = $modele_Rattrapage->findAll();
+        $modele_DS = new DevoirModel();
 
-        echo view('communs/enTete', $data = ['titre' => 'Connexion']);
-        echo view('rattrapages/listeRattrapages', ['rattrapages' => $rattrapages]);
+        $allDS = $modele_DS -> findAll();
+        $allRattrapages = $modele_Rattrapage -> findAll();
+
+        $lstDS = [];
+
+        foreach ( $allDS as $ds )
+        {
+
+            foreach ( $allRattrapages as $rattrapage )
+            {
+                if ( $rattrapage['iddevoir'] == $ds['iddevoir'] )
+                {
+                    $rat = $rattrapage;
+                    break;
+                }
+            }
+
+            $nomEns = $modele_DS->getNomEnseignant( $ds['iddevoir'] );
+            $nomRes = $modele_DS->getNomRessource( $ds['idres'] );
+            $semRes = $modele_DS->getSemRessource( $ds['idres'] );
+
+            $lstDS[] = [
+                'idDS' => $ds['iddevoir'],
+                'typeDS' => $ds['typedevoir'],
+                'dureeDS' => $ds['dureedevoir'],
+                'dateDS' => $ds['datedevoir'],
+                'nomEns' => $nomEns,
+                'nomRes' => $nomRes,
+                'semRes' => $semRes,
+                'etatRat' => $rat['etatrat'],
+                'dateRat' => $rat['daterat'],
+            ];
+        }
+
+        echo view('communs/enTete', $data = ['titre' => 'Liste Rattrapages']);
+        echo view('rattrapages/listeRattrapages', ['lstDS' => $lstDS]);
         echo view('communs/basDePage');
     }
 }

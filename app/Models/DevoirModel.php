@@ -59,4 +59,33 @@ class DevoirModel extends Model
         // charger les données
         $this->db = \Config\Database::connect();
     }
+
+    public function getAllIdDS()
+    {
+        $query = $this->db->query("SELECT iddevoir FROM devoirs_sgrds");
+        $row = $query->getResultArray();
+        return $row;
+    }
+
+    public function getNomEnseignant($idens)
+    {
+        $query = $this->db->query("SELECT nomens FROM enseignants_sgrds WHERE idens = $idens");
+        $row = $query->getRow();
+        return $row->nomens;
+    }
+
+    public function getNomRessource($idres)
+    {
+        $query = $this->db->query("SELECT nomres FROM ressources_sgrds WHERE idres = '$idres'");
+        $row = $query->getRow();
+        return $row->nomres;
+    }
+
+    public function getSemRessource($idres)
+    {
+        $query = $this->db->query("SELECT semres FROM ressources_sgrds WHERE idres = '$idres'");
+        $row = $query->getRow();
+        return $row->semres;
+    }
+
 }

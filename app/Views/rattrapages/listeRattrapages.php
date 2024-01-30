@@ -3,32 +3,26 @@
 
         <h1 class="text-2xl text-gray-800 font-bold mb-4">Liste de rattrapage</h1>
 
-        <div class="bg-white shadow-md rounded p-4">
+        <div class="bg-white shadow-md rounded-[12px] border-gray-500 border-2 p-4 overflox-y-auto">
 
-            <?php if (!empty($rattrapages)) : ?>
+            <?php if (!empty($lstDS)) : ?>
 
-                <table class="w-full table-auto">
+                <?php foreach ($lstDS as $ds) : ?>
+                <div class="border border-gray-400 border-collapse border-b-2 border-t-0 border-l-0 border-r-0">
+                    <div>
+                        <p>Semestre <?= $ds['semRes']; ?> - <?= $ds['nomRes']; ?> </p>
+                        <p><?= $ds['dateDS'];?> - DS <?= $ds['typeDS'];?> - <?= $ds['dureeDS'];?></p>
+                        <p>Enseignant : <?= $ds['nomEns'];?></p>
+                    </div>
+                    <div>
+                        <p>Etat : <?= $ds['etatRat'];?></p>
+                        <p>Date : <?= $ds['dateRat'];?></p>
+                    </div>
+                    <div>
 
-                    <tbody>
-
-                    <!-- You can use PHP to loop through your database results and generate table rows -->
-
-                    <?php foreach ($rattrapages as $rattrapage) : ?>
-                        <tr>
-                            <td class="border px-4 py-2"><?php echo date('d/m/y', strtotime($rattrapage['daterat'])); ?></td>
-                            <td class="border px-4 py-2"><?php echo $rattrapage['salleRat']; ?></td>
-                            <td class="border px-4 py-2"><?php echo $rattrapage['typeRat']; ?></td>
-                            <td class="border px-4 py-2"><?php echo $rattrapage['dureeRat']; ?></td>
-                            <td class="border px-4 py-2"><?php echo $rattrapage['iddevoir']; ?></td>
-                            <!-- Add more columns as needed -->
-                        </tr>
-                    <?php endforeach; ?>
-
-                    <!-- More rows here -->
-
-                    </tbody>
-
-                </table>
+                    </div>
+                </div>
+                <?php endforeach; ?>
 
             <?php else : ?>
                     <p>Aucun rattrapage n'a été trouvé.</p>

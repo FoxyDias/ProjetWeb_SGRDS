@@ -71,5 +71,4 @@ class RattrapageModel extends Model
         // charger les données
         $this->db = \Config\Database::connect();
     }
-
 }
