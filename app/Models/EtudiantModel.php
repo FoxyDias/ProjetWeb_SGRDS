@@ -53,4 +53,9 @@ class EtudiantModel extends Model
             $this->forge->createTable($this->table);
         }
     }
+
+    public function getNomPrenomEtudiantByPromo($promo)
+    {
+        return $this->select('prenometu, nometu')->where('promoetu', $promo)->orderBy('nometu')->findAll();
+    }
 }

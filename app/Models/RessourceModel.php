@@ -42,4 +42,9 @@ class RessourceModel extends Model
         // charger les données
         $this->db = \Config\Database::connect();
     }
+
+    public function getRessourcesBySem($semres)
+    {
+        return $this->select('nomres')->where('semres', $semres)->findAll();
+    }
 }
