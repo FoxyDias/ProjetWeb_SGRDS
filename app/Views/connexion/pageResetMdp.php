@@ -40,7 +40,7 @@
             <!-- bouton connexion -->
             <div class="flex flex-col items-center mx-2">
                 <div class="h-full flex">
-                    <button class="shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline-gray focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                    <button class="shadow bg-gray-500 hover:bg-gray-400 focus:shadow-outline-gray focus:outline-none text-white font-bold py-2 px-4 rounded-[18px]" type="button">
                         Réinitialiser le mot de passe
                     </button>
                 </div>
