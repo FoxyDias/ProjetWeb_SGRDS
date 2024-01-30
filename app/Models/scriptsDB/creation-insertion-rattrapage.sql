@@ -5,7 +5,7 @@
 
 CREATE TABLE rattrapages_sgrds (
     idRat serial primary key,
-    etatRat varchar(50) NOT NULL,
+    etatRat varchar(50) NOT NULL CHECK (etatRat IN ('Programmé', 'Neutralisé', 'En attente')),
     dateRat date NOT NULL,
     salleRat varchar(50) NOT NULL,
     typeRat varchar(50) NOT NULL,
