@@ -31,6 +31,7 @@ class ListeRattrapagesController extends BaseController
             }
 
             $nomEns = $modele_DS->getNomEnseignant( $ds['iddevoir'] );
+            $prenomEns = $modele_DS->getPrenomEnseignant( $ds['iddevoir'] );
             $nomRes = $modele_DS->getNomRessource( $ds['idres'] );
             $semRes = $modele_DS->getSemRessource( $ds['idres'] );
 
@@ -40,6 +41,7 @@ class ListeRattrapagesController extends BaseController
                 'dureeDS' => $ds['dureedevoir'],
                 'dateDS' => $ds['datedevoir'],
                 'nomEns' => $nomEns,
+                'prenomEns' => $prenomEns,
                 'nomRes' => $nomRes,
                 'semRes' => $semRes,
                 'etatRat' => $rat['etatrat'],

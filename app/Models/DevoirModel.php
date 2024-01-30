@@ -74,6 +74,13 @@ class DevoirModel extends Model
         return $row->nomens;
     }
 
+    public function getPrenomEnseignant($idens)
+    {
+        $query = $this->db->query("SELECT prenomens FROM enseignants_sgrds WHERE idens = $idens");
+        $row = $query->getRow();
+        return $row->prenomens;
+    }
+
     public function getNomRessource($idres)
     {
         $query = $this->db->query("SELECT nomres FROM ressources_sgrds WHERE idres = '$idres'");
