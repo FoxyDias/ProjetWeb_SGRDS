@@ -49,7 +49,7 @@
                             <!-- Si l'état est "En attente" -->
                             <?php if ($ds['etatRat'] == 'En attente') : ?>
                                 <div class="">
-                                    <a href="<?= site_url('listerattrapages/ajoutrattrapage/'. $ds['idDS']);?>" class="underline">Prévoir le rattrapage</a>
+                                    <a href="<?= site_url('ajoutrattrapage/' . $ds['idDS']);?>" class="underline">Prévoir le rattrapage</a>
                                 </div>
                             <?php endif; ?>
 
