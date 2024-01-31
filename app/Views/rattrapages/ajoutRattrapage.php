@@ -46,7 +46,75 @@
 
 
 
+
+
+
+
        </div>
+
+
+
+
+
+                   <!-- Le formulaire préconstruit initialement caché -->
+                   <div class="h-full">
+                       <form id="prebuiltForm" class="text-center h-1/2">
+                           <h3 id="nomRessourcePlaceholder"></h3>
+
+                           <div class="flex justify-center">
+                               <div class="flex flex-col w-1/2">
+                                   <div class="mb-2 p-2 rounded text-right">
+                                       <label for="date">Date :</label>
+                                   </div>
+                                   <div class="mb-2 p-2 rounded text-right">
+                                       <label>Type :</label>
+                                   </div>
+                                   <div class="mb-2 p-2 rounded text-right">
+                                       <label for="duree">Durée :</label>
+                                   </div>
+                                   <div class="mb-2 p-2 rounded text-right">
+                                       <label for="enseignant">Enseignant concerné :</label>
+                                   </div>
+                               </div>
+                               <div class="flex flex-col w-3/4">
+                                   <div class="mb-2 p-2 rounded">
+                                       <input type="date" id="date" name="date">
+                                   </div>
+                                   <div class="mb-2 p-2 flex justify-center rounded">
+                                       <div class="flex justify-start mb-2">
+                                           <label class="mr-4">
+                                               <input type="radio" name="type" value="papier"> Papier
+                                           </label>
+                                           <label>
+                                               <input type="radio" name="type" value="machine"> Machine
+                                           </label>
+                                       </div>
+                                   </div>
+                                   <div class="mb-2 rounded">
+                                       <select id="duree" name="duree">
+                                           <option value="1">1 heure</option>
+                                           <option value="2">2 heures</option>
+                                           <option value="3">3 heures</option>
+                                           <!-- Ajoutez d'autres options selon vos besoins -->
+                                       </select>
+                                   </div>
+                                   <div class="mb-2 p-2 rounded">
+                                       <select id="enseignant" name="enseignant">
+                                           <option value="1">M. Dupont</option>
+                                           <option value="2">Mme. Durand</option>
+                                           <option value="3">M. Martin</option>
+                                           <!-- Ajoutez d'autres options selon vos besoins -->
+                                       </select>
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="flex justify-center">
+                               <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
+                           </div>
+                       </form>
+                   </div>
+               </div>
+
 
 
 
