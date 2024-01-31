@@ -61,6 +61,11 @@ class EnseignantModel extends Model
         return $this->select('idens,prenomens, nomens')->orderBy('nomens')->findAll();
     }
 
+    public function getNomPrenomEnseignantById($idens)
+    {
+        return $this->select('prenomens, nomens')->where('idens', $idens)->first();
+    }
+
     public function getEnseignant($idens)
     {
         return $this->where('idens', $idens)->first();
