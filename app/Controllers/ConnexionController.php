@@ -18,12 +18,17 @@ class ConnexionController extends BaseController
         $modele_enseignant = new EnseignantModel();
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
-        $data = $modele_enseignant->getByEmail('email', $email);
-        if($data){
-            $pass = $data['password'];
-            if(crypt($pass, gen_salt('bf')) == $password){
+        $data = $modele_enseignant->getByEmail( $email );
 
-                if($data['estAdmin'] == FALSE)
+        var_dump($email);
+        var_dump($password);
+
+        if($data){
+            $pass = $data['mdpens'];
+            var_dump($pass);
+            if(password_verify($password, $pass)){
+                var_dump($data);
+                if($data['estadmin'] == FALSE)
                 {
                     $ses_data = [
                         'idutilisateur' => $data['idens'],
@@ -47,11 +52,11 @@ class ConnexionController extends BaseController
                 $session->set($ses_data);
                 return redirect()->to('./listerattrapages');
             }else{
-                $session->setFlashdata('msg', 'Password incorrect.');
-                return redirect()->to('./connexion');
+                $session->setFlashdata('errorMDP', 'Mot de Passe invalide.');
+                //return redirect()->to('./connexion');
             }
         }else{
-            $session->setFlashdata('msg', 'Email exite pas.');
+            $session->setFlashdata('errorEmail', "Email invalide");
             return redirect()->to('./connexion');
         }
     }

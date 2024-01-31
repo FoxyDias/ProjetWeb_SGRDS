@@ -8,6 +8,7 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 
 $routes->get('connexion', 'ConnexionController::index');
+$routes->post('connexion/traitement', 'ConnexionController::connexionAuthentification');
 
 $routes->get('mdpoublie', 'MdpOublieController::index');
 

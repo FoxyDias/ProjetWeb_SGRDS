@@ -43,7 +43,7 @@ class EnseignantModel extends Model
                     'type' => 'VARCHAR',
                     'constraint' => '255',
                 ],
-                'estAdmin' => [
+                'estadmin' => [
                     'type' => 'BOOLEAN',
                 ],
             ];
@@ -61,8 +61,21 @@ class EnseignantModel extends Model
         return $this->where('idens', $idens)->first();
     }
 
+    public function getIdMdpByEmail($adrens)
+    {
+        $query = $this->db->query("SELECT idens, mdpens FROM enseignants_sgrds WHERE adrens = '$adrens'");
+        return $query->getResult();
+    }
+
+    public function getMdpById($idens)
+    {
+        $query = $this->db->query("SELECT mdpens FROM enseignants_sgrds WHERE idens = '$idens'");
+        return $query->getResult();
+    }
+
     public function getByEmail($adrens)
     {
         return $this->where('adrens', $adrens)->first();
+    }
 
 }

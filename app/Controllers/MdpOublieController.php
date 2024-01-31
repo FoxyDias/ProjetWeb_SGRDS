@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+use App\Models\EnseignantModel;
 use CodeIgniter\Controller;
 
 class MdpOublieController extends Controller
@@ -13,22 +14,21 @@ class MdpOublieController extends Controller
     }
     public function envoieLienReset()
     {
-        $email = $this->request->getPost('email');
-        $userModel = new UserModelB();
-        $user = $userModel->where('email', $email)->first();
-        // Dans la méthode sendResetLink du contrôleur ForgotPasswordController
-        $email = $this->request->getPost('email');
-        echo 'Adresse e-mail soumise : ' . $email;
-        if ($user) {
+        $email = $this->request->getVar('email');
+        $modele_enseignant = new EnseignantModel();
+        $idmdp = $modele_enseignant->getIdMdpByEmail( $email );
+        $data = $modele_enseignant->getMdpById( $idmdp );
+
+        if ($data) {
             // Générer un jeton de réinitialisation de MDP et enregistrer-le dans BD
             $token = bin2hex(random_bytes(16));
             $expiration = date('Y-m-d H:i:s', strtotime('+1 hour'));
-            $userModel->set('reset_token', $token)
+            $data->set('reset_token', $token)
                 ->set('reset_token_expiration', $expiration)
                 ->update($user['id']);
 
             // Envoyer l'e-mail avec le lien de réinitialisation
-            $resetLink = site_url("reset-password/$token");
+            $resetLink = site_url("./pageResetMdp/$token");
             $message = "Cliquez sur le lien suivant pour réinitialiser MDP: $resetLink";
 
             // Utilisez la classe Email de CodeIgniter pour envoyer l'e-mail
