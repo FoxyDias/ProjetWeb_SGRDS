@@ -1,5 +1,5 @@
 <div class=" ml-10 ChoixSemestre">
-     <h1> Sélectionner le semestre : </h1>
+    <h1> Sélectionner le semestre : </h1>
 </div>
 
 <div class="ml-10 mt-5 EnsembleSemestres w-1/2 border border-gray-500 flex flex-row ">
@@ -59,55 +59,66 @@
                 <?php endforeach; ?>
             </div>
         </div>
-        <div id="formulaireContainer" style="display: none; width: 500px; height: 400px; " class="flex border border-gray-600 ">
+        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex border border-gray-600">
             <!-- Le formulaire préconstruit initialement caché -->
             <div class="h-full">
-                <form id="prebuiltForm" class="text-center h-1/2">
-                    <h3 id="nomRessourcePlaceholder"></h3>
+                <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>">
+                    <h3 id="nomRessourcePlaceholder" class="mt-5"></h3>
 
-                    <div class="flex justify-center">
+                    <div class="flex justify-center mt-5">
                         <div class="flex flex-col w-1/2">
                             <div class="mb-2 p-2 rounded text-right">
-                                <label for="date">Date :</label>
+                                <label for="date">Date* :</label>
                             </div>
                             <div class="mb-2 p-2 rounded text-right">
-                                <label>Type :</label>
+                                <label>Type* :</label>
                             </div>
                             <div class="mb-2 p-2 rounded text-right">
-                                <label for="duree">Durée :</label>
+                                <label for="duree">Durée* :</label>
                             </div>
                             <div class="mb-2 p-2 rounded text-right">
-                                <label for="enseignant">Enseignant concerné :</label>
+                                <label for="enseignant">Enseignant concerné* :</label>
                             </div>
                         </div>
                         <div class="flex flex-col w-3/4">
-                            <div class="mb-2 p-2 rounded">
-                                <input type="date" id="date" name="date">
+                            <div class="mb-2 p-2 ml-10 rounded">
+                                <input type="date" id="date" name="date" max="<?=date('Y-m-d')?>" required>
                             </div>
                             <div class="mb-2 p-2 flex justify-center rounded">
                                 <div class="flex justify-start mb-2">
                                     <label class="mr-4">
-                                        <input type="radio" name="type" value="papier"> Papier
+                                        <input type="radio" name="type" value="papier" required> Papier
                                     </label>
                                     <label>
-                                        <input type="radio" name="type" value="machine"> Machine
+                                        <input type="radio" name="type" value="machine" required> Machine
                                     </label>
                                 </div>
                             </div>
-                            <div class="mb-2 rounded">
-                                <select id="duree" name="duree">
-                                    <option value="1">1 heure</option>
-                                    <option value="2">2 heures</option>
-                                    <option value="3">3 heures</option>
-                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                            <div class="mb-2 w-1/2 rounded" style="margin-left: 34%">
+                                <select id="duree" name="duree" class="w-1/2" required>
+                                    // valeur vide
+                                    <option value="" disabled selected></option>
+                                    <option value="1">1h00</option>
+                                    <option value="1">1h15</option>
+                                    <option value="1">1h30</option>
+                                    <option value="1">1h45</option>
+                                    <option value="1">2h00</option>
+                                    <option value="1">2h15</option>
+                                    <option value="1">2h30</option>
+                                    <option value="1">2h45</option>
+                                    <option value="1">3h00</option>
+                                    <option value="1">3h15</option>
+                                    <option value="1">3h30</option>
+                                    <option value="1">3h45</option>
+                                    <option value="1">4h00</option>
                                 </select>
                             </div>
-                            <div class="mb-2 p-2 rounded">
-                                <select id="enseignant" name="enseignant">
-                                    <option value="1">M. Dupont</option>
-                                    <option value="2">Mme. Durand</option>
-                                    <option value="3">M. Martin</option>
-                                    <!-- Ajoutez d'autres options selon vos besoins -->
+                            <div class="rounded w-3/4" style="margin-left: 5%;">
+                                <select id="enseignant" name="enseignant" class="w-75 mt-5" required>
+                                    <option value="" disabled selected></option>
+                                    <?php foreach ($enseignants as $enseignant) : ?>
+                                        <option value="1"><?=$enseignant['nomens']?> <?=$enseignant['prenomens']?></option>
+                                    <?php endforeach; ?>
                                 </select>
                             </div>
                         </div>

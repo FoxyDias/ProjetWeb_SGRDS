@@ -56,6 +56,11 @@ class EnseignantModel extends Model
         $this->db = \Config\Database::connect();
     }
 
+    public function getNomPrenomEnseignant(): array
+    {
+        return $this->select('prenomens, nomens')->orderBy('nomens')->findAll();
+    }
+
     public function getEnseignant($idens)
     {
         return $this->where('idens', $idens)->first();
@@ -64,5 +69,6 @@ class EnseignantModel extends Model
     public function getByEmail($adrens)
     {
         return $this->where('adrens', $adrens)->first();
+    }
 
 }
