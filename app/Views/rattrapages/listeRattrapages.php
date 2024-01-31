@@ -1,4 +1,4 @@
- <div class="bg-gray-100 font-sans leading-normal tracking-normal">
+ <div class="bg-[#adbfcf] font-sans leading-normal tracking-normal">
     <div class="container mx-auto p-4">
 
         <h1 class="text-2xl text-gray-800 font-bold mb-4">Liste de rattrapage</h1>
@@ -51,7 +51,8 @@
                                 <div class="">
                                     <a href="<?= site_url('ajoutrattrapage/' . $ds['idDS']);?>" class="underline">Prévoir le rattrapage</a>
                                 </div>
-                            <?php endif; ?>
+
+                        <?php endif; ?>
 
                     </div>
                 </div>
