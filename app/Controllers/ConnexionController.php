@@ -53,7 +53,7 @@ class ConnexionController extends BaseController
                 return redirect()->to('./listerattrapages');
             }else{
                 $session->setFlashdata('errorMDP', 'Mot de Passe invalide.');
-                //return redirect()->to('./connexion');
+                return redirect()->to('./connexion');
             }
         }else{
             $session->setFlashdata('errorEmail', "Email invalide");

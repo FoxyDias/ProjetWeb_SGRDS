@@ -63,14 +63,7 @@ class EnseignantModel extends Model
 
     public function getIdByEmail($adrens)
     {
-        $query = $this->db->query("SELECT idens FROM enseignants_sgrds WHERE adrens = '$adrens'");
-        return $query->getResult();
-    }
-
-    public function getMdpById($idens)
-    {
-        $query = $this->db->query("SELECT mdpens FROM enseignants_sgrds WHERE idens = '$idens'");
-        return $query->getResult();
+        return $this->select('idens')->where('adrens', $adrens)->first();
     }
 
     public function getByEmail($adrens)
