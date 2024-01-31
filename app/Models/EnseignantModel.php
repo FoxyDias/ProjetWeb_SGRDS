@@ -11,7 +11,7 @@ class EnseignantModel extends Model
        'prenomens',
        'adrens',
        'mdpens',
-
+       'estAdmin',
     ];
     public function __construct()
     {
@@ -61,8 +61,8 @@ class EnseignantModel extends Model
         return $this->where('idens', $idens)->first();
     }
 
-    public function getEnseignantByEmail($email)
+    public function getByEmail($adrens)
     {
-        return $this->where('adrens', $email)->first();
-    }
+        return $this->where('adrens', $adrens)->first();
+
 }
