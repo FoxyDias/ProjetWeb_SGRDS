@@ -10,6 +10,8 @@ $routes->get('/', 'Home::index');
 $routes->get('connexion', 'ConnexionController::index');
 $routes->post('connexion/traitement', 'ConnexionController::connexionAuthentification');
 
+$routes->get('deconnexion', 'ConnexionController::deconnexion');
+
 $routes->get('mdpoublie', 'MdpOublieController::index');
 $routes->post('mdpoublie/traitement', 'MdpOublieController::envoieLienReset');
 
