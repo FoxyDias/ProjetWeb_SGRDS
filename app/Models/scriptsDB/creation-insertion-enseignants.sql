@@ -19,8 +19,10 @@ CREATE TABLE enseignants_sgrds (
 INSERT INTO enseignants_sgrds (nomEns, prenomEns, adrEns, mdpEns, estAdmin) VALUES
 -- Admin
 ('DUFLO','Hugues','hugues.duflo@univ-lehavre.fr', crypt('root', gen_salt('bf')), true),
+('DIAS','Foxy','bryan.lemagnen@gmail.com', crypt('1234', gen_salt('bf')), true),
 -- Enseignants
 ('RODOLPHE', 'Charrier', 'charrier.rodolphe@univ-lehavre.fr', crypt('test1', gen_salt('bf')), false),
 ('BOUKACHOUR','Hadhoum','hadhoum.boukachour@univ-lehavre.fr', crypt('test2', gen_salt('bf')), false),
 ('NIVET','Laurence','laurence.nivet@univ-lehavre.fr', crypt('test3', gen_salt('bf')), false),
-('LAFFEACH','Quentin','quentin.laffeach@univ-lehavre.fr', crypt('test4', gen_salt('bf')), false);
+('LAFFEACH','Quentin','quentin.laffeach@univ-lehavre.fr', crypt('test4', gen_salt('bf')), false),
+('LEMAGNEN','Bryan','lb2112229@etu.univ-lehavre.fr', crypt('1234', gen_salt('bf')), false);
