@@ -17,3 +17,11 @@ $routes->get('resetmdp/(:any)', 'ResetMdpController::index/$1');
 $routes->post('resetmdp/traitement/(:any)', 'ResetMdpController::resetMdp/$1');
 
 $routes->get('listerattrapages', 'ListeRattrapagesController::index');
+
+$routes->get('ajoutds', 'AjoutDsControleur::index');
+
+$routes->get('afficherRessourcesParSemestre/(:any)', 'AjoutDsControleur::afficherRessourcesParSemestre/$1');
+
+$routes->get('formAjouterDs', 'AjoutDsControleur::formAjouterDs');
+
+$routes->post('confirmerInfosDs', 'AjoutDsControleur::confirmerInfosDs');
