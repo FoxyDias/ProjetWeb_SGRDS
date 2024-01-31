@@ -43,6 +43,9 @@ class EnseignantModel extends Model
                     'type' => 'VARCHAR',
                     'constraint' => '255',
                 ],
+                'estAdmin' => [
+                    'type' => 'BOOLEAN',
+                ],
             ];
             $this->forge->addField($fields);
             $this->forge->addKey('idens', true);
@@ -56,5 +59,10 @@ class EnseignantModel extends Model
     public function getEnseignant($idens)
     {
         return $this->where('idens', $idens)->first();
+    }
+
+    public function getByEMail($adrens)
+    {
+        return $this->where('adrens', $adrens)->first();
     }
 }
