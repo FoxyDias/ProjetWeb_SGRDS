@@ -60,5 +60,10 @@ class MdpModel extends Model
         return $mdp['idmdp'];
     }
 
+    public function getByToken($token)
+    {
+        return $this->where('reset_token', $token)->first();
+    }
+
 
 }

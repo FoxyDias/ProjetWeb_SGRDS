@@ -14,6 +14,6 @@ $routes->get('mdpoublie', 'MdpOublieController::index');
 $routes->post('mdpoublie/traitement', 'MdpOublieController::envoieLienReset');
 
 $routes->get('resetmdp/(:any)', 'ResetMdpController::index/$1');
-$routes->post('resetmdp/(:any)', 'ResetMdpController::resetMdp/$1');
+$routes->post('resetmdp/traitement/(:any)', 'ResetMdpController::resetMdp/$1');
 
 $routes->get('listerattrapages', 'ListeRattrapagesController::index');

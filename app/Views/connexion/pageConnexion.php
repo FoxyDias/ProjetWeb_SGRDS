@@ -22,6 +22,13 @@
 
     <!-- formulaire -->
     <form action="./connexion/traitement" method="post" accept-charset="utf-8" class="bg-white w-full max-w-sm rounded-[12px] border-gray-500 border-2 shadow-xl py-7 px-4">
+        <!-- message d'erreur session mdpmodifie -->
+        <?php if (session('mdpmodifie')) : ?>
+            <div class="md:w-2/3 text-center">
+                <p class="text-green-500 text-xs italic"><?php echo session()->getFlashdata('mdpmodifie') ?></p>
+            </div>
+        <?php endif ?>
+
         <!-- identifiant -->
         <div class="md:flex md:items-center mb-6">
             <div class="md:w-1/3">

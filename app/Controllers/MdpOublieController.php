@@ -27,6 +27,11 @@ class MdpOublieController extends Controller
 
             // Générer un jeton de réinitialisation de MDP et enregistrer-le dans BD
             $token = bin2hex(random_bytes(16));
+            //verifie que le token est pas déjà utilisé
+            while ($modele_mdp->getByToken($token)) {
+                $token = bin2hex(random_bytes(16));
+            }
+
             $expiration = date('Y-m-d H:i:s', strtotime('+1 hour'));
             $mdp_utilisateur = $modele_mdp->getById( $idens );
             var_dump($mdp_utilisateur);
@@ -50,6 +55,7 @@ class MdpOublieController extends Controller
             $emailService->setSubject('Réinitialisation de mot de passe');
             $emailService->setMessage($message);
             if ($emailService->send()) {
+                $session->setFlashdata('mdpmodifie', 'Un mail vous a été envoyé');
                 return redirect()->to('./connexion');
             } else {
                 $session->setFlashdata('errorEmail', "Un problème est survenue lors de l'envoie du mail");
