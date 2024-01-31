@@ -5,6 +5,7 @@ use CodeIgniter\Model;
 class EnseignantModel extends Model
 {
     protected $table = 'enseignants_sgrds';
+    protected $primaryKey = 'idens';
     protected $allowedFields = [
         'idens',
        'nomens',
@@ -43,7 +44,7 @@ class EnseignantModel extends Model
                     'type' => 'VARCHAR',
                     'constraint' => '255',
                 ],
-                'estAdmin' => [
+                'estadmin' => [
                     'type' => 'BOOLEAN',
                 ],
             ];
@@ -61,8 +62,19 @@ class EnseignantModel extends Model
         return $this->where('idens', $idens)->first();
     }
 
+    public function getIdByEmail($adrens)
+    {
+        return $this->select('idens')->where('adrens', $adrens)->first();
+    }
+
     public function getByEmail($adrens)
     {
         return $this->where('adrens', $adrens)->first();
+    }
+
+    public function getByIdens($idens)
+    {
+        return $this->where('idens', $idens)->first();
+    }
 
 }
