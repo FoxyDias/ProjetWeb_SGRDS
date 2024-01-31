@@ -58,7 +58,7 @@ class EnseignantModel extends Model
 
     public function getNomPrenomEnseignant(): array
     {
-        return $this->select('prenomens, nomens')->orderBy('nomens')->findAll();
+        return $this->select('idens,prenomens, nomens')->orderBy('nomens')->findAll();
     }
 
     public function getEnseignant($idens)

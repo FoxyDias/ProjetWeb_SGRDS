@@ -30,13 +30,21 @@ class AjoutDsControleur extends BaseController
 
     public function formAjouterDs()
     {
-        $data = [
-            'idres' => $this->request->getVar('ressource'),
-            'typedevoir' => $this->request->getVar('typeDevoir'),
-            'dureedevoir' => $this->request->getVar('dureeDevoir'),
-            'datedevoir' => $this->request->getVar('dateDevoir'),
-            'idens' => $this->request->getVar('enseignant'),
+        $dataForm = [
+            'idRessource' => $this->request->getVar('idRessource'),
+            'typedevoir' => $this->request->getVar('type'),
+            'dureedevoir' => $this->request->getVar('duree'),
+            'datedevoir' => $this->request->getVar('date'),
+            'idens' => $this->request->getVar('idEnseignant'),
+
         ];
+
+        print_r($dataForm);
+
+        echo view('communs/enTete', $data = ['titre' => 'Infos DS']);
+        echo view('DS/confirmerInfosDs');
+        echo view('communs/basDePage');
+
 
 
 

@@ -53,7 +53,7 @@
                 <?php $totalRessources = count($ressources); ?>
                 <?php foreach ($ressources as $key => $ressource) : ?>
                     <div class="mb-2 p-2 cursor-pointer w-full ressource <?php echo ($key < $totalRessources - 1) ? 'border-b' : ''; ?> border-gray-400 rounded-br rounded-bl"
-                         onclick="showForm('<?=$ressource['nomres']?>')">
+                         onclick="showForm('<?=$ressource['nomres']?>', '<?=$ressource['idres']?>')">
                         <h3><?=$ressource['nomres']?></h3>
                     </div>
                 <?php endforeach; ?>
@@ -63,7 +63,8 @@
             <!-- Le formulaire préconstruit initialement caché -->
             <div class="h-full">
                 <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>">
-                    <h3 id="nomRessourcePlaceholder" class="mt-5"></h3>
+                    <h3 id="nomRessourcePlaceholder" data-id-ressource=""> class="mt-5"></h3>
+                    <input type="hidden" id="idRessource" name="idRessource" value="">
 
                     <div class="flex justify-center mt-5">
                         <div class="flex flex-col w-1/2">
@@ -71,13 +72,13 @@
                                 <label for="date">Date* :</label>
                             </div>
                             <div class="mb-2 p-2 rounded text-right">
-                                <label>Type* :</label>
+                                <label for="type">Type* :</label>
                             </div>
                             <div class="mb-2 p-2 rounded text-right">
                                 <label for="duree">Durée* :</label>
                             </div>
                             <div class="mb-2 p-2 rounded text-right">
-                                <label for="enseignant">Enseignant concerné* :</label>
+                                <label for="enseignant" name="enseignant">Enseignant concerné* :</label>
                             </div>
                         </div>
                         <div class="flex flex-col w-3/4">
@@ -86,38 +87,37 @@
                             </div>
                             <div class="mb-2 p-2 flex justify-center rounded">
                                 <div class="flex justify-start mb-2">
-                                    <label class="mr-4">
-                                        <input type="radio" name="type" value="papier" required> Papier
+                                    <label for="type" class="mr-4">
+                                        <input type="radio" name="type" value="Papier" required> Papier
                                     </label>
-                                    <label>
-                                        <input type="radio" name="type" value="machine" required> Machine
+                                    <label for="type">
+                                        <input type="radio" name="type" value="Machine" required> Machine
                                     </label>
                                 </div>
                             </div>
                             <div class="mb-2 w-1/2 rounded" style="margin-left: 34%">
                                 <select id="duree" name="duree" class="w-1/2" required>
-                                    // valeur vide
                                     <option value="" disabled selected></option>
-                                    <option value="1">1h00</option>
-                                    <option value="1">1h15</option>
-                                    <option value="1">1h30</option>
-                                    <option value="1">1h45</option>
-                                    <option value="1">2h00</option>
-                                    <option value="1">2h15</option>
-                                    <option value="1">2h30</option>
-                                    <option value="1">2h45</option>
-                                    <option value="1">3h00</option>
-                                    <option value="1">3h15</option>
-                                    <option value="1">3h30</option>
-                                    <option value="1">3h45</option>
-                                    <option value="1">4h00</option>
+                                    <option value="1h00">1h00</option>
+                                    <option value="1h15">1h15</option>
+                                    <option value="1h30">1h30</option>
+                                    <option value="1h45">1h45</option>
+                                    <option value="2h00">2h00</option>
+                                    <option value="2h15">2h15</option>
+                                    <option value="2h30">2h30</option>
+                                    <option value="2h45">2h45</option>
+                                    <option value="3h00">3h00</option>
+                                    <option value="3h15">3h15</option>
+                                    <option value="3h30">3h30</option>
+                                    <option value="3h45">3h45</option>
+                                    <option value="4h00">4h00</option>
                                 </select>
                             </div>
                             <div class="rounded w-3/4" style="margin-left: 5%;">
-                                <select id="enseignant" name="enseignant" class="w-75 mt-5" required>
+                                <select name="idEnseignant" class="w-75 mt-5" required>
                                     <option value="" disabled selected></option>
                                     <?php foreach ($enseignants as $enseignant) : ?>
-                                        <option value="1"><?=$enseignant['nomens']?> <?=$enseignant['prenomens']?></option>
+                                        <option value="<?=$enseignant['idens']?>"> <?=$enseignant['nomens']?> <?=$enseignant['prenomens']?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
@@ -143,7 +143,7 @@
         window.location.href = '<?=site_url('afficherRessourcesParSemestre/')?>' + semesterNumber;
     }
 
-    function showForm(nomRessource) {
+    function showForm(nomRessource, idRessource) {
         // Réinitialisez la couleur de fond de toutes les ressources
         var ressources = document.querySelectorAll('.ressource');
         ressources.forEach(function (ressource) {
@@ -158,5 +158,7 @@
 
         // Mettez à jour le nom de la ressource dans le formulaire
         document.getElementById('nomRessourcePlaceholder').innerText = nomRessource;
+        document.getElementById('idRessource').value = idRessource;
+
     }
 </script>
