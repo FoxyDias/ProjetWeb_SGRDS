@@ -11,7 +11,7 @@ class EnseignantModel extends Model
        'prenomens',
        'adrens',
        'mdpens',
-
+       'estAdmin',
     ];
     public function __construct()
     {
@@ -43,6 +43,9 @@ class EnseignantModel extends Model
                     'type' => 'VARCHAR',
                     'constraint' => '255',
                 ],
+                'estAdmin' => [
+                    'type' => 'BOOLEAN',
+                ],
             ];
             $this->forge->addField($fields);
             $this->forge->addKey('idens', true);
@@ -57,4 +60,9 @@ class EnseignantModel extends Model
     {
         return $this->where('idens', $idens)->first();
     }
+
+    public function getByEmail($adrens)
+    {
+        return $this->where('adrens', $adrens)->first();
+
 }

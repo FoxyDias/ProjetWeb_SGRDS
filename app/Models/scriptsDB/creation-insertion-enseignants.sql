@@ -15,9 +15,11 @@ CREATE TABLE enseignants_sgrds (
 -- insertion des enseignants
 
 -- Directeur des études
-INSERT INTO enseignants_sgrds (nomEns, prenomEns, adrEns, mdpEns) VALUES
-('RODOLPHE', 'Charrier', 'charrier.rodolphe@univ-lehavre.fr', crypt('test1', gen_salt('bf'))),
+INSERT INTO enseignants_sgrds (nomEns, prenomEns, adrEns, mdpEns, estAdmin) VALUES
+-- Admin
+('DUFLO','Hugues','hugues.duflo@univ-lehavre.fr', crypt('root', gen_salt('bf'), true));
 -- Enseignants
-('BOUKACHOUR','Hadhoum','hadhoum.boukachour@univ-lehavre.fr', crypt('test2', gen_salt('bf'))),
-('NIVET','Laurence','laurence.nivet@univ-lehavre.fr', crypt('test3', gen_salt('bf'))),
-('LAFFEACH','Quentin','quentin.laffeach@univ-lehavre.fr', crypt('test4', gen_salt('bf')));
+('RODOLPHE', 'Charrier', 'charrier.rodolphe@univ-lehavre.fr', crypt('test1', gen_salt('bf'), false)),
+('BOUKACHOUR','Hadhoum','hadhoum.boukachour@univ-lehavre.fr', crypt('test2', gen_salt('bf'), false)),
+('NIVET','Laurence','laurence.nivet@univ-lehavre.fr', crypt('test3', gen_salt('bf'), false)),
+('LAFFEACH','Quentin','quentin.laffeach@univ-lehavre.fr', crypt('test4', gen_salt('bf'), false));

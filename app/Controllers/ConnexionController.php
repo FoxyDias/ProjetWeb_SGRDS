@@ -1,5 +1,6 @@
 <?php
 namespace App\Controllers;
+use App\Models\EnseignantModel;
 use CodeIgniter\Controller;
 
 class ConnexionController extends BaseController
@@ -11,32 +12,47 @@ class ConnexionController extends BaseController
         echo view('connexion/pageConnexion');
         echo view('communs/basDePage');
     }
-    public function loginAuth()
+    public function connexionAuthentification()
     {
         $session = session();
-        $userModel = new UserModel();
-        $identifiant = $this->request->getVar('identifiant');
+        $modele_enseignant = new EnseignantModel();
+        $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
-        $data = $userModel->where('email', $identifiant)->first();
+        $data = $modele_enseignant->getByEmail('email', $email);
         if($data){
             $pass = $data['password'];
-            $authenticatePassword = password_verify($password, $pass);
-            if($authenticatePassword){
-                $ses_data = [
-                    'id' => $data['id'],
-                    'name' => $data['name'],
-                    'email' => $data['email'],
-                    'isLoggedIn' => TRUE
-                ];
+            if(crypt($pass, gen_salt('bf')) == $password){
+
+                if($data['estAdmin'] == FALSE)
+                {
+                    $ses_data = [
+                        'idutilisateur' => $data['idens'],
+                        'nomUtilisateur' => $data['nomens'],
+                        'prenomUtilisateur' => $data['prenomens'],
+                        'emailUtilisateur' => $data['adrens'],
+                        'estProf' => TRUE,
+                        'estAdmin' => FALSE,
+                    ];
+                }else{
+                    $ses_data = [
+                        'idutilisateur' => $data['idens'],
+                        'nomUtilisateur' => $data['nomens'],
+                        'prenomUtilisateur' => $data['prenomens'],
+                        'emailUtilisateur' => $data['adrens'],
+                        'estProf' => TRUE,
+                        'estAdmin' => TRUE,
+                    ];
+                }
+
                 $session->set($ses_data);
-                return redirect()->to('/profile');
+                return redirect()->to('./listerattrapages');
             }else{
                 $session->setFlashdata('msg', 'Password incorrect.');
-                return redirect()->to('/signin');
+                return redirect()->to('./connexion');
             }
         }else{
             $session->setFlashdata('msg', 'Email exite pas.');
-            return redirect()->to('/signin');
+            return redirect()->to('./connexion');
         }
     }
 }
