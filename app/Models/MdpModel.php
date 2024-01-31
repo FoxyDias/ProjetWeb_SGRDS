@@ -4,6 +4,7 @@ use CodeIgniter\Model;
 class MdpModel extends Model
 {
     protected $table = 'mdp_sgrds';
+    protected $primaryKey = 'idmdp';
     protected $allowedFields =
         [
         'idmdp',
@@ -46,6 +47,22 @@ class MdpModel extends Model
         }
         // charger les données
         $this->db = \Config\Database::connect();
+    }
+
+    public function getById($idens)
+    {
+        return $this->where('idens', $idens)->first();
+    }
+
+    public function getIdByIdens($idens)
+    {
+        $mdp = $this->where('idens', $idens)->first();
+        return $mdp['idmdp'];
+    }
+
+    public function getByToken($token)
+    {
+        return $this->where('reset_token', $token)->first();
     }
 
 
