@@ -23,8 +23,8 @@ $routes->get('listerattrapages', 'ListeRattrapagesController::index');
 $routes->get('ajoutrattrapage/(:any)', 'AjoutRattrapageController::index/$1');
 $routes->post('ajoutrattrapage/(:any)/traitement', 'AjoutRattrapageController::traitement/$1');
 
-$routes->get('ajout_etudiants_absents', 'AjoutElevesAbsents::index');
-$routes->post('ajout_etudiants_absents/traitement', 'AjoutElevesAbsents::traitement');
+$routes->get('ajout_etudiants_absents', 'AjoutElevesAbsentsController::index');
+$routes->post('ajout_etudiants_absents/traitement', 'AjoutElevesAbsentsController::traitement');
 
 $routes->get('ajoutds', 'AjoutDsControleur::index');
 
