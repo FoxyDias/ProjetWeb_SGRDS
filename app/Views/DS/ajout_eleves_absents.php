@@ -44,10 +44,17 @@
     <div class="w-3/5 flex flex-row justify-between mt-10">
 
         <!--Flèche de retours -->
-        <div class="inline-block md:w-2/3">
-            <a href="./ajoutds">
-                <img src="<?= base_url('/images/fleche_retour.png'); ?>"  >
-            </a>
+        <div class="inline-block md:w-2/3 ">
+                <img src="<?= base_url('/images/fleche_retour.png'); ?>" class="cursor-pointer"onclick="customConfirm()">
+        </div>
+
+        <div id="custom-alert" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 border border-6 border-gray-600 rounded-[18px]  shadow-md z-50 hidden">
+            <p>Voulez-vous vraiment annuler l'ajout du DS ? </br>
+                Les informations saisies seront perdues. </p>
+            <div class="mt-4 text-right">
+                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-400" onclick="cancelAction()">Annuler</button>
+                <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-400" onclick="confirmAction()">Confirmer</button>
+            </div>
         </div>
 
         <!--Rappel des infos -->
@@ -223,6 +230,20 @@ document.getElementById('btnEnvoyer').addEventListener('click', function() {
 
     document.getElementById('formAbsence').submit();
 });
+
+    function customConfirm() {
+    document.getElementById('custom-alert').style.display = 'block';
+}
+
+    function cancelAction() {
+    document.getElementById('custom-alert').style.display = 'none';
+}
+
+    function confirmAction() {
+    window.location.href = "<?= base_url('ajoutds'); ?>";
+
+}
+
 </script>
 <style>
     .selected {

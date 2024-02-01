@@ -28,7 +28,7 @@ INSERT INTO etudiants_sgrds (nomEtu, prenomEtu, adrEtu, promoEtu) VALUES
 ('ROCHA','Anthony','anthony.rocha@etu.univ-lehavre.fr',3),
 ('CLACCIN','Noemie','noemie.claccin@etu.univ-lehavre.fr',3),
 ('LECLEACH','Louis','louis.le-cleach@etu.univ-lehavre.fr',3),
-('LEMAGNEN','Bryan', 'bryan.lemagnen@etu.univ-lehavre.fr',3);
+('LEMAGNEN','Bryan', 'bryan.lemagnen@gmail.com',3);
 
 
 
