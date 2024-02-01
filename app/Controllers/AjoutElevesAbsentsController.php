@@ -9,11 +9,12 @@ use App\Models\EtudiantModel;
 
 class AjoutElevesAbsentsController extends BaseController
 {
-    public function index()
+    public function index($idDevoir)
     {
         $devoirDB = new DevoirModel();
-        $dernierDevoir = $devoirDB->getLastIdDS();
-        $infoDevoir = $devoirDB->getInfoDevoir($dernierDevoir[0]);
+
+        $dernierDevoir = $idDevoir;
+        $infoDevoir = $devoirDB->getInfoDevoir($dernierDevoir);
 
         $ressourceDB = new RessourceModel();
         $infoRessource = $ressourceDB->getInfoById($infoDevoir['idres']);

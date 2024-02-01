@@ -98,6 +98,6 @@ class AjoutDsControleur extends BaseController
 
         $rattrapageDB->insert($insererRattrapage);
 
-        return redirect()->to('./ajout_etudiants_absents');
+        return redirect()->to('./ajout_etudiants_absents/'.$idDevoir['iddevoir']);
     }
 }

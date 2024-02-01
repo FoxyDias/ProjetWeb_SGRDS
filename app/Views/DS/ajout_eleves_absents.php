@@ -1,13 +1,3 @@
-<?php
-
-$semestre = 1;
-$matiere = "InitInitInitInitI nitInitInitInitInitInitInitInitInitInitIn itInitInitInit";
-$date = "26/09/23";
-$type = "machine";
-$duree = "1h30";
-$enseignant = "Philippe LEPIVERT";
-
-?>
 <script>
     class Eleve {
         constructor(nom, prenom, id) {
