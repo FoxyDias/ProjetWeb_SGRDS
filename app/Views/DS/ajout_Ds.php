@@ -1,4 +1,4 @@
-<div class=" ml-10 ChoixSemestre">
+<div class=" ml-10 mt-3 ChoixSemestre">
     <h1> Sélectionner le semestre : </h1>
 </div>
 
@@ -59,7 +59,7 @@
                 <?php endforeach; ?>
             </div>
         </div>
-        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex border border-gray-600">
+        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex border border-gray-600 mt-5">
             <!-- Le formulaire préconstruit initialement caché -->
             <div class="h-full">
                 <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>" method="post">
@@ -123,8 +123,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex justify-center">
-                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
+                    <div class="flex justify-center mt-5 ">
+                        <button type="submit" class=" w-1/3 bg-gray-600 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">Valider</button>
                     </div>
                 </form>
             </div>
