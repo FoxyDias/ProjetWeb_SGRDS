@@ -78,4 +78,9 @@ class RattrapageModel extends Model
         $row = $query->getRow();
         return $row->idrat;
     }
+
+    public function getByIdDs($iddevoir)
+    {
+        return $this->where('iddevoir', $iddevoir)->first();
+    }
 }

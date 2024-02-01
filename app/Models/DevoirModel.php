@@ -60,42 +60,6 @@ class DevoirModel extends Model
         $this->db = \Config\Database::connect();
     }
 
-    public function getAllIdDS()
-    {
-        $query = $this->db->query("SELECT iddevoir FROM devoirs_sgrds");
-        $row = $query->getResultArray();
-        return $row;
-    }
-
-    public function getNomEnseignant($idens)
-    {
-        $query = $this->db->query("SELECT nomens FROM enseignants_sgrds WHERE idens = $idens");
-        $row = $query->getRow();
-        return $row->nomens;
-    }
-
-    public function getPrenomEnseignant($idens)
-    {
-        $query = $this->db->query("SELECT prenomens FROM enseignants_sgrds WHERE idens = $idens");
-        $row = $query->getRow();
-        return $row->prenomens;
-    }
-
-    public function getNomRessource($idres)
-    {
-        $query = $this->db->query("SELECT nomres FROM ressources_sgrds WHERE idres = '$idres'");
-        $row = $query->getRow();
-        return $row->nomres;
-    }
-
-    public function getSemRessource($idres)
-    {
-        $query = $this->db->query("SELECT semres FROM ressources_sgrds WHERE idres = '$idres'");
-        $row = $query->getRow();
-        return $row->semres;
-    }
-
-
     public function getLastIdDS()
     {
         $query = $this->db->query("SELECT iddevoir FROM devoirs_sgrds ORDER BY iddevoir DESC LIMIT 1");
@@ -113,10 +77,4 @@ class DevoirModel extends Model
         return $this->where('iddevoir', $iddevoir)->first();
     }
 
-    public function getDevoirById($iddevoir)
-    {
-        $query = $this->db->query("SELECT * FROM devoirs_sgrds WHERE iddevoir = $iddevoir");
-        $row = $query->getRow();
-        return $row;
-    }
 }

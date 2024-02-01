@@ -1,7 +1,9 @@
 <?php
 namespace App\Controllers;
+use App\Models\EnseignantModel;
 use App\Models\RattrapageModel;
 use App\Models\DevoirModel;
+use App\Models\RessourceModel;
 use CodeIgniter\Controller;
 
 class ListeRattrapagesController extends BaseController
@@ -12,39 +14,28 @@ class ListeRattrapagesController extends BaseController
 
         $modele_Rattrapage = new RattrapageModel();
         $modele_DS = new DevoirModel();
+        $modele_enseignant = new EnseignantModel();
+        $modele_ressource = new RessourceModel();
 
         $allDS = $modele_DS -> findAll();
-        $allRattrapages = $modele_Rattrapage -> findAll();
-
 
         $lstDS = [];
 
         foreach ( $allDS as $ds )
         {
-
-            foreach ( $allRattrapages as $rattrapage )
-            {
-                if ( $rattrapage['iddevoir'] == $ds['iddevoir'] )
-                {
-                    $rat = $rattrapage;
-                    break;
-                }
-            }
-
-            $nomEns = $modele_DS->getNomEnseignant( $ds['iddevoir'] );
-            $prenomEns = $modele_DS->getPrenomEnseignant( $ds['iddevoir'] );
-            $nomRes = $modele_DS->getNomRessource( $ds['idres'] );
-            $semRes = $modele_DS->getSemRessource( $ds['idres'] );
+            $rat = $modele_Rattrapage->getByIdDs( $ds['iddevoir'] );
+            $ens = $modele_enseignant->getByIdEns( $ds['idens'] );
+            $res = $modele_ressource->getByIdRes( $ds['idres'] );
 
             $lstDS[] = [
                 'idDS' => $ds['iddevoir'],
                 'typeDS' => $ds['typedevoir'],
                 'dureeDS' => $ds['dureedevoir'],
                 'dateDS' => $ds['datedevoir'],
-                'nomEns' => $nomEns,
-                'prenomEns' => $prenomEns,
-                'nomRes' => $nomRes,
-                'semRes' => $semRes,
+                'nomEns' => $ens['nomens'],
+                'prenomEns' => $ens['prenomens'],
+                'nomRes' => $res['nomres'],
+                'semRes' => $res['semres'],
                 'etatRat' => $rat['etatrat'],
                 'dateRat' => $rat['daterat'],
                 'salleRat' => $rat['sallerat'],
