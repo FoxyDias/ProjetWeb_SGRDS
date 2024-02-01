@@ -52,7 +52,7 @@
             <div class="ml-10 mt-5 flex flex-col border border-gray-400 rounded-xl w-auto text-center mr-auto">
                 <?php $totalRessources = count($ressources); ?>
                 <?php foreach ($ressources as $key => $ressource) : ?>
-                    <div class="mb-2 p-2 cursor-pointer w-full ressource <?php echo ($key < $totalRessources - 1) ? 'border-b' : ''; ?> border-gray-400 rounded-br rounded-bl"
+                    <div class="p-4 cursor-pointer w-full ressource <?php echo ($key < $totalRessources - 1) ? 'border-b' : ''; ?> border-gray-400 rounded-br rounded-bl"
                          onclick="showForm('<?=$ressource['nomres']?>', '<?=$ressource['idres']?>')">
                         <h3><?=$ressource['nomres']?></h3>
                     </div>
@@ -60,11 +60,13 @@
             </div>
         </div>
 
-        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex rounded-xl border border-gray-600 mt-5">
+        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex rounded-xl border-2 border-gray-500 mt-5 p-5">
             <!-- Le formulaire préconstruit initialement caché -->
-            <div class="h-full">
-                <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>" method="post">
-                    <h3 id="nomRessourcePlaceholder" data-id-ressource=""> class="mt-5"></h3>
+            <div class="h-full ">
+                <form id="prebuiltForm" class="text-center h-1/2 " action="<?=site_url('formAjouterDs')?>" method="post">
+                    <div style="padding-bottom: 10px; padding-top: 10px" class="bg-white rounded-xl rounded-b-none border-gray-400 border-collapse border-b-2 border-t-0 border-r-0 border-l-0">
+                        <h3 id="nomRessourcePlaceholder" data-id-ressource="" class="font-bold decoration-4"></h3>
+                    </div>
                     <input type="hidden" id="idRessource" name="idRessource" value="">
 
                     <div class="flex justify-center mt-5">

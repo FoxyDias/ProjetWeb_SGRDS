@@ -25,12 +25,13 @@ class Database extends Config
      * The default database connection.
      */
     public array $default = [
-        'DSN' => 'Postgre://ra212336:Melrch76-@woody.iut.univ-lehavre.fr:5432', // Postgre://lb211229:MDP@localhost:5432/lb211229
+        //'DSN' => 'Postgre://ra212336:Melrch76-@woody.iut.univ-lehavre.fr:5432',
+        'DSN' => 'Postgre://ra212336:Melrch76-@localhost:5432/ra212336',
         'hostname'     => 'localhost',
         'username'     => '',
         'password'     => '',
         'database'     => '',
-        'DBDriver'     => 'MySQLi',
+        'DBDriver'     => 'Postgre',
         'DBPrefix'     => '',
         'pConnect'     => false,
         'DBDebug'      => true,
