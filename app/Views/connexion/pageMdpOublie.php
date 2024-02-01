@@ -3,7 +3,7 @@
     <div class="absolute md:flex md:items-center mb-6">
         <div class="md:w-2/3">
             <a href="./connexion" >
-                <img src="<?= base_url('/images/fleche_retour.png'); ?>" >
+                <img src="<?= base_url('/images/fleche_retour.png'); ?>"  >
             </a>
         </div>
     </div>
