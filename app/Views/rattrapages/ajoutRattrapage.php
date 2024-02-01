@@ -13,7 +13,7 @@
 
                    <!-- Le formulaire préconstruit initialement caché -->
                    <div class="h-full">
-                       <form id="prebuiltForm" class="text-center h-1/2">
+                       <form action="./ajoutrattrapage/<?=$iddevoir?>/traitement" id="prebuiltForm" class="text-center h-1/2">
 
                            <div class="flex justify-center">
                                <div class="flex flex-col w-1/2">
@@ -38,16 +38,15 @@
                                </div>
 
 
-
                                <div class="flex flex-col w-3/4">
                                    <div class="mb-2 p-2 rounded">
-                                       <input type="date" id="date" name="date">
+                                       <input type="date" id="date" name="date" class="elementDS">
                                    </div>
                                    <div class="mb-2 p-2 rounded">
-                                      <input type="time" id="time" name="time">
+                                      <input type="time" id="time" name="time" class="elementDS">
                                   </div>
                                    <div class="mb-2 p-2 rounded">
-                                      <select id="duree" name="duree">
+                                      <select id="duree" name="duree" class="elementDS">
                                             <option value="">--Choisir la durée du DS--</option>
                                             <option value="1h">1h</option>
                                             <option value="1h15">1h15</option>
@@ -67,19 +66,19 @@
                                    <div class="mb-2 p-2 flex justify-center rounded">
                                        <div class="flex justify-start mb-2">
                                            <label class="mr-4">
-                                               <input type="radio" id="papier" value="papier"> Papier
+                                               <input type="radio" id="papier" value="papier" class="elementDS"> Papier
                                            </label>
                                            <label>
-                                               <input type="radio" id="machine" value="machine"> Machine
+                                               <input type="radio" id="machine" value="machine" class="elementDS"> Machine
                                            </label>
                                        </div>
                                    </div>
 
                                     <div class="mb-2 p-2 ">
-                                        <input type="text" id="salle" name="salle" />
+                                        <input type="text" id="salle" name="salle" class="elementDS"/>
                                     </div>
                                      <div class="mb-2 p-2 rounded">
-                                        <textarea name="commentaire" rows="12" cols="35"></textarea>
+                                        <textarea id="commentaire" name="commentaire" rows="12" cols="35"></textarea>
                                     </div>
                                </div>
                            </div>
@@ -96,31 +95,36 @@
 </div>
 
 <script>
-
+/*
     document.addEventListener("DOMContentLoaded", function() {
 
-        var checkbox = document.queryElementById("nonRattrapage");
+        var checkbox = document.queryElementById('nonRattrapage');
 
         var date = document.queryElementById("date");
         var time = document.queryElementById("time");
         var duree = document.queryElementById("duree");
         var papier = document.queryElementById("papier");
         var machine = document.queryElementById("machine");
-
         var salle = document.queryElementById("salle");
+
+        var elementsDS = document.querySelectorAll('.elementDS');
 
 
         checkbox.addEventListener('change', function()
         {
             var isChecked = checkbox.checked;
 
-            salle.disabled = !isChecked;
+            elementsDS.forEach(function(elementDS){
+                elementDS.disabled = !isChecked;
+            });
 
         });
 
+
+
    });
 
-
+*/
 
 
 </script>
