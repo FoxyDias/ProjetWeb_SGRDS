@@ -54,7 +54,7 @@ $enseignant = "Philippe LEPIVERT";
     <div class="w-3/5 flex flex-row justify-between mt-10">
 
         <!--Flèche de retours -->
-        <div class="inline-block">
+        <div class="inline-block md:w-2/3">
             <a href="./ajoutds">
                 <img src="<?= base_url('/images/fleche_retour.png'); ?>"  >
             </a>
