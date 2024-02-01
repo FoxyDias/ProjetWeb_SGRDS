@@ -98,8 +98,6 @@ class AjoutDsControleur extends BaseController
 
         $rattrapageDB->insert($insererRattrapage);
 
-        echo view('communs/enTete', $data = ['titre' => 'Liste élèves']);
-        echo view('DS/ajout_eleves_absents', ['idDevoir' => $idDevoir['iddevoir']]);
-        echo view('communs/basDePage');
+        return redirect()->to('./ajout_etudiants_absents');
     }
 }
