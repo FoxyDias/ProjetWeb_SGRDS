@@ -60,7 +60,7 @@
             </div>
         </div>
 
-        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex border border-gray-600 mt-5">
+        <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex rounded-xl border border-gray-600 mt-5">
             <!-- Le formulaire préconstruit initialement caché -->
             <div class="h-full">
                 <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>" method="post">
