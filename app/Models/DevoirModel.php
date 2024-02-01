@@ -107,5 +107,11 @@ class DevoirModel extends Model
         return $this->where('iddevoir', $iddevoir)->first();
     }
 
+    public function getDevoirById($iddevoir)
+    {
+        $query = $this->db->query("SELECT * FROM devoirs_sgrds WHERE iddevoir = $iddevoir");
+        $row = $query->getRow();
+        return $row;
+    }
 
 }

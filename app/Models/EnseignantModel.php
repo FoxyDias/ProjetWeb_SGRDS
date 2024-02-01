@@ -64,5 +64,5 @@ class EnseignantModel extends Model
     public function getByEmail($adrens)
     {
         return $this->where('adrens', $adrens)->first();
-
+    }
 }
