@@ -19,5 +19,6 @@ $routes->post('resetmdp/(:any)', 'ResetMdpController::resetMdp/$1');
 
 $routes->get('listerattrapages', 'ListeRattrapagesController::index');
 
-$routes->get('ajout_etudiants_absents', 'AjoutElevesAbsents::index');
+$routes->get('ajout_etudiants_absents', 'AjoutElevesAbsentsController::index');
+$routes->post('ajout_etudiants_absents/traitement', 'AjoutElevesAbsentsController::traitement');
 

@@ -102,4 +102,10 @@ class DevoirModel extends Model
         return $row->iddevoir;
     }
 
+    public function getInfoDevoir($iddevoir) : array
+    {
+        return $this->where('iddevoir', $iddevoir)->first();
+    }
+
+
 }
