@@ -4,6 +4,7 @@ use CodeIgniter\Controller;
 use App\Models\RessourceModel;
 use App\Models\EnseignantModel;
 use App\Models\DevoirModel;
+use App\Models\RattrapageModel;
 
 class AjoutDsControleur extends BaseController
 {
@@ -23,9 +24,10 @@ class AjoutDsControleur extends BaseController
         // recuperer les enseignants
         $enseignantsDB = new EnseignantModel();
         $enseignants = $enseignantsDB->getNomPrenomEnseignant();
+        $numSemestre = $semestre;
 
         echo view('communs/enTete', $data = ['titre' => 'Ajout DS']);
-        echo view('DS/ajout_Ds', ['ressources' => $ressources, 'enseignants' => $enseignants]);
+        echo view('DS/ajout_Ds', ['ressources' => $ressources, 'enseignants' => $enseignants, 'numSemestre' => $numSemestre]);
         echo view('communs/basDePage');
     }
 
@@ -35,17 +37,17 @@ class AjoutDsControleur extends BaseController
         $enseignantsDB = new EnseignantModel();
         $ressourcesDB  = new RessourceModel();
 
-        $idens       = $this->request->getVar('idEnseignant');
-        $idRessource = $this->request->getVar('idRessource');
+        $idens       = $this->request->getPost('idEnseignant');
+        $idRessource = $this->request->getPost('idRessource');
         $numSemestre = $ressourcesDB->getNumSemestreById($idRessource);
 
         $dataForm = [
             'idRessource'  => $idRessource,
             'numSemestre'  => $numSemestre,
             'nomRessource' => $ressourcesDB->getNomRessourceById($idRessource),
-            'typedevoir'   => $this->request->getVar('type'),
-            'dureedevoir'  => $this->request->getVar('duree'),
-            'datedevoir'   => $this->request->getVar('date'),
+            'typedevoir'   => $this->request->getPost('type'),
+            'dureedevoir'  => $this->request->getPost('duree'),
+            'datedevoir'   => $this->request->getPost('date'),
             'idens' => $idens,
             'nomPrenomEnseignant' => $enseignantsDB->getNomPrenomEnseignantById($idens)
         ];
@@ -74,5 +76,26 @@ class AjoutDsControleur extends BaseController
 
         $devoirDB->insert($datasInsertion);
 
+        // recuperer l'id du devoir
+        $idDevoir = $devoirDB->getIdDevoir( $datasInsertion['typedevoir'],
+                                            $datasInsertion['dureedevoir'],
+                                            $datasInsertion['datedevoir'],
+                                            $datasInsertion['idens'],
+                                            $datasInsertion['idres']);
+
+        $rattrapageDB = new RattrapageModel();
+
+        $insererRattrapage = [
+            'etatrat' => 'En attente',
+            'daterat' => null,
+            'sallerat' => null,
+            'typerat' => null ,
+            'commrat' => null,
+            'dureerat'=> null,
+            'iddevoir' => $idDevoir['iddevoir'],
+
+        ];
+
+        $rattrapageDB->insert($insererRattrapage);
     }
 }

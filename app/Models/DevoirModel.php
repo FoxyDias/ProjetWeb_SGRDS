@@ -95,4 +95,9 @@ class DevoirModel extends Model
         return $row->semres;
     }
 
+    public function getIdDevoir($typedevoir, $dureedevoir, $datedevoir, $idens, $idres)
+    {
+        return $this->select('iddevoir')->where('typedevoir', $typedevoir)->where('dureedevoir', $dureedevoir)->where('datedevoir', $datedevoir)->where('idens', $idens)->where('idres', $idres)->first();
+    }
+
 }

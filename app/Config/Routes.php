@@ -23,5 +23,6 @@ $routes->get('ajoutds', 'AjoutDsControleur::index');
 $routes->get('afficherRessourcesParSemestre/(:any)', 'AjoutDsControleur::afficherRessourcesParSemestre/$1');
 
 $routes->get('formAjouterDs', 'AjoutDsControleur::formAjouterDs');
+$routes->match(['get', 'post'], 'formAjouterDs', 'AjoutDsControleur::formAjouterDs');
 
 $routes->post('confirmerInfosDs', 'AjoutDsControleur::confirmerInfosDs');
