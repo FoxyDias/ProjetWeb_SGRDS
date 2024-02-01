@@ -23,7 +23,7 @@ class RessourceModel extends Model
         {
             $fields = [
                 'idres' => [
-                    'type' => 'INT',
+                    'type' => 'VARCHAR',
                     'constraint' => '10',
                 ],
                 'nomres' => [
@@ -45,6 +45,16 @@ class RessourceModel extends Model
 
     public function getRessourcesBySem($semres)
     {
-        return $this->select('nomres')->where('semres', $semres)->findAll();
+        return $this->select('idres,nomres')->where('semres', $semres)->findAll();
+    }
+
+    public function getNomRessourceById($idres)
+    {
+        return $this->select('nomres')->where('idres', $idres)->first();
+    }
+
+    public function getNumSemestreById($idres)
+    {
+        return $this->select('semres')->where('idres', $idres)->first();
     }
 }
