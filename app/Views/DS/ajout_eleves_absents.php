@@ -50,7 +50,8 @@
 
         <div id="custom-alert" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 border border-6 border-gray-600 rounded-[18px]  shadow-md z-50 hidden">
             <p>Voulez-vous vraiment annuler l'ajout du DS ? </br>
-                Les informations saisies seront perdues. </p>
+                Il n'y aura pas d'élèves notés absents pour ce DS. </br>
+            Merci de remplir ultérieurement.</p>
             <div class="mt-4 text-right">
                 <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-400" onclick="cancelAction()">Annuler</button>
                 <button class="px-4 py-2 bg-gray-600 text-white rounded hover:bg-gray-400" onclick="confirmAction()">Confirmer</button>
@@ -240,7 +241,7 @@ document.getElementById('btnEnvoyer').addEventListener('click', function() {
 }
 
     function confirmAction() {
-    window.location.href = "<?= base_url('ajoutds'); ?>";
+    window.location.href = "<?= base_url('listerattrapages'); ?>";
 
 }
 

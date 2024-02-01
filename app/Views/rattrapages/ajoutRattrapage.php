@@ -1,5 +1,8 @@
-
+<div class="flex w-1/5 ml-5 mt-5 ">
+    <img src="<?= base_url('/images/fleche_retour.png'); ?>" alt="retour" class="w-1/5 cursor-pointer" onclick="window.history.back()">
+</div>
 <div class="container mx-auto p-4 flex flex-col items-center">
+
     <div class="flex justify-center">
         <h1 class="text-2xl text-gray-800 font-bold mb-4">Prévoir le rattrapage</h1>
     </div>

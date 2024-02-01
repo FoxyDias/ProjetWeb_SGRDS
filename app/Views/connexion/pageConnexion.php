@@ -2,9 +2,7 @@
 <!-- fleche -->
 <div class="absolute md:flex md:items-center mb-6">
     <div class="md:w-2/3">
-        <a href="#" >
-            <img src="<?= base_url('/images/fleche_retour.png'); ?>"  >
-        </a>
+            <img src="<?= base_url('/images/fleche_retour.png'); ?>" alt="retour" class=" cursor-pointer" onclick="customConfirm()">
     </div>
 </div>
 
@@ -81,3 +79,9 @@
 </div>
 
 </div>
+<script>
+
+    function customConfirm() {
+        window.location.href = "<?= base_url('listerattrapages'); ?>"
+    }
+</script>
