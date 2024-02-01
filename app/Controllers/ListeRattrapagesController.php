@@ -1,6 +1,8 @@
 <?php
 namespace App\Controllers;
 use App\Models\EnseignantModel;
+use App\Models\EtudiantModel;
+use App\Models\EtuDSModel;
 use App\Models\RattrapageModel;
 use App\Models\DevoirModel;
 use App\Models\RessourceModel;
@@ -48,5 +50,28 @@ class ListeRattrapagesController extends BaseController
         echo view('communs/enTete', $data = ['titre' => 'Liste Rattrapages']);
         echo view('rattrapages/listeRattrapages', ['lstDS' => $lstDS]);
         echo view('communs/basDePage');
+    }
+
+    public function supprimerDs($idDS)
+    {
+        $modele_Rattrapage = new RattrapageModel();
+        $modele_EtuDs = new EtuDSModel();
+        $modele_DS = new DevoirModel();
+
+        $idRat = $modele_Rattrapage->getByIdDs($idDS)['idrat'] ?? null;
+        $lst = $modele_EtuDs->getByIdDs($idDS);
+
+        if ( $idRat != null)
+            $modele_Rattrapage->delete($idRat);
+
+        foreach ( $lst as $etu)
+        {
+            if ( $etu['idetuds'] != null)
+                $modele_EtuDs->delete($etu['idetuds']);
+        }
+
+        $modele_DS->delete($idDS);
+
+        return redirect()->to(site_url('listerattrapages'));
     }
 }

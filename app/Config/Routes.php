@@ -19,6 +19,7 @@ $routes->get('resetmdp/(:any)', 'ResetMdpController::index/$1');
 $routes->post('resetmdp/traitement/(:any)', 'ResetMdpController::resetMdp/$1');
 
 $routes->get('listerattrapages', 'ListeRattrapagesController::index');
+$routes->post('supprimerDs/(:any)', 'ListeRattrapagesController::supprimerDs/$1');
 
 $routes->get('ajoutrattrapage/(:any)', 'AjoutRattrapageController::index/$1');
 $routes->post('ajoutrattrapage/(:any)/traitement', 'AjoutRattrapageController::traitement/$1');

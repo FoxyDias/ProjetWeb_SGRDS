@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class DevoirModel extends Model
 {
     protected $table = 'devoirs_sgrds';
+    protected $primaryKey = 'iddevoir';
     protected $allowedFields = [
         'iddevoir',
         'typedevoir',

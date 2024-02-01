@@ -86,6 +86,17 @@
                         <?php endif; ?>
 
                     </div>
+                    <div class="m-3">
+                        <!-- bouton supprimer -->
+                        <?php if (session()->get('estAdmin')) : ?>
+                            <form action="<?= site_url('supprimerDs/' . $ds['idDS']);?>" method="post">
+                                <button type="submit" class="">
+                                    <img src="<?= base_url('/images/poubelle_supprimer.png');?>" alt="Supprimer" class="w-4 h-4">
+                                </button>
+                            </form>
+                        <?php endif; ?>
+                    </div>
+
                 </div>
             <?php endforeach; ?>
 

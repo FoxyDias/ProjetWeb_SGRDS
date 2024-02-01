@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class EtuDSModel extends Model
 {
     protected $table = 'etuds_sgrds';
+    protected $primaryKey = 'idetuds';
     protected $allowedFields = [
         'idetuds',
         'absetu',
@@ -56,6 +57,11 @@ class EtuDSModel extends Model
     public function getEtudiantsJustifies($idDevoir)
     {
         return $this->select('idetu')->where('iddevoir', $idDevoir)->where('absetu', 'justifie')->findAll();
+    }
+
+    public function getByIdDs($idDS)
+    {
+        return $this->where('iddevoir', $idDS)->findAll();
     }
 
 }
