@@ -28,20 +28,20 @@ class ListeRattrapagesController extends BaseController
             $res = $modele_ressource->getByIdRes( $ds['idres'] );
 
             $lstDS[] = [
-                'idDS' => $ds['iddevoir'],
-                'typeDS' => $ds['typedevoir'],
-                'dureeDS' => $ds['dureedevoir'],
-                'dateDS' => $ds['datedevoir'],
-                'nomEns' => $ens['nomens'],
-                'prenomEns' => $ens['prenomens'],
-                'nomRes' => $res['nomres'],
-                'semRes' => $res['semres'],
-                'etatRat' => $rat['etatrat'],
-                'dateRat' => $rat['daterat'],
-                'salleRat' => $rat['sallerat'],
-                'typeRat' => $rat['typerat'],
-                'dureeRat' => $rat['dureerat'],
-                'commentaireRat' => $rat['commrat'],
+                'idDS' => $ds['iddevoir'] ?? null,
+                'typeDS' => $ds['typedevoir'] ?? null,
+                'dureeDS' => $ds['dureedevoir'] ?? null,
+                'dateDS' => $ds['datedevoir'] ?? null,
+                'nomEns' => $ens['nomens']  ?? null,
+                'prenomEns' => $ens['prenomens'] ?? null,
+                'nomRes' => $res['nomres'] ?? null,
+                'semRes' => $res['semres'] ?? null,
+                'etatRat' => $rat['etatrat']    ?? null,
+                'dateRat' => $rat['daterat']   ?? null,
+                'salleRat' => $rat['sallerat'] ?? null,
+                'typeRat' => $rat['typerat']     ?? null,
+                'dureeRat' => $rat['dureerat'] ?? null,
+                'commentaireRat' => $rat['commrat'] ?? null,
             ];
         }
 
