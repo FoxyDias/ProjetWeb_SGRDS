@@ -23,16 +23,18 @@ class AjoutRattrapageController extends BaseController
     public function traitement($iddevoir)
     {
 
-        if(isset($_POST['nonRattrapage']))
+        $request = \Config\Services::request();
+
+        $nonRattrapage = $this->request->getPost('nonRattrapage');
+
+        if(!$nonRattrapage)
         {
             //cas ou c'est un rattrapage
 
-            $request = \Config\Services::request();
-
             $date = $request->getPost('date');
             $heure = $request->getPost('time');
-            var_dump($date);
-            var_dump($heure);
+
+            $date = $date . " " . $heure;
 
             $salle = $request->getPost('salle');
             $type = $request->getPost('type');
@@ -40,6 +42,8 @@ class AjoutRattrapageController extends BaseController
             $duree = $request->getPost('duree');
 
             $modele_rattrapage = new RattrapageModel();
+
+            $user = $modele_rattrapage->where('iddevoir', $iddevoir)->first();
 
             $modele_rattrapage->set('etatrat', "Programmé")
             ->set('daterat', $date)
@@ -49,16 +53,29 @@ class AjoutRattrapageController extends BaseController
             ->set('sallerat', $salle)
             ->set('dureerat', $duree)
             ->set('iddevoir', $iddevoir)
-            ->update($user['$iddevoir']);
+            ->update($modele_rattrapage->getIdByIdDevoir($user['iddevoir']));
 
-
-            // echo view('listeRattrapages');
+            return redirect()->to('./listerattrapages');
         }
         else
         {
-            //cas ou ce n'est pas un rattrapage
+            //cas ou c'est un non rattrapage);
 
+            $modele_rattrapage = new RattrapageModel();
+
+            $user = $modele_rattrapage->where('iddevoir', $iddevoir)->first();
+
+            $modele_rattrapage->set('etatrat', "Neutralisé")
+            ->set('daterat', null)
+            ->set('sallerat', null)
+            ->set('typerat', null)
+            ->set('commrat', null)
+            ->set('sallerat', null)
+            ->set('dureerat', null)
+            ->set('iddevoir', $iddevoir)
+            ->update($modele_rattrapage->getIdByIdDevoir($user['iddevoir']));
+
+            return redirect()->to('./listerattrapages');
         }
-
     }
 }

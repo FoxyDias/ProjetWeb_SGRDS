@@ -7,6 +7,7 @@ use CodeIgniter\Model;
 class RattrapageModel extends Model
 {
     protected $table = 'rattrapages_sgrds';
+    protected $primaryKey = 'idrat';
     protected $allowedFields = [
         'idrat',
         'etatrat',
@@ -69,5 +70,12 @@ class RattrapageModel extends Model
         }
         // charger les données
         $this->db = \Config\Database::connect();
+    }
+
+    public function getIdByIdDevoir($iddevoir)
+    {
+        $query = $this->db->query("SELECT idrat FROM rattrapages_sgrds WHERE iddevoir = $iddevoir");
+        $row = $query->getRow();
+        return $row->idrat;
     }
 }
