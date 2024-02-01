@@ -89,7 +89,7 @@
             <div class="ml-10 mt-5 flex flex-col border border-gray-400 rounded-xl w-auto text-center mr-auto">
                 <?php $nombreEleves = count($eleves); $cpt=0?>
                 <?php foreach ($eleves as $key => $eleve) : ?>
-                    <div class="mb-2 p-2 cursor-pointer w-full eleve <?php echo ($key < $nombreEleves - 1) ? 'border-b' : ''; ?> border-gray-400 rounded-br rounded-bl">
+                    <div class="p-2 cursor-pointer w-full eleve <?php echo ($key < $nombreEleves - 1) ? 'border-b' : ''; ?> border-gray-400 rounded-br rounded-bl">
                         <h3><?=$eleve['nometu']." ".$eleve['prenometu']?></h3>
                     </div>
                     <script>
@@ -142,7 +142,7 @@
                     //On clique sur l'élève, il est absent, on le met en présent, on change sa couleur (gris -> blanc)
                     eleveTrouve.setAbsent(false);
                     eleveTrouve.setJustifie(false);
-                    eleve.setAttribute("class", "mb-2 p-2 cursor-pointer w-full eleve border-b border-gray-400 rounded-br rounded-bl");
+                    eleve.setAttribute("class", "p-2 cursor-pointer w-full eleve border-b border-gray-400 rounded-br rounded-bl");
 
                     tableau.removeChild(elevePresentDansTableau.parentNode);
                     if (tableau.childElementCount == 0) {
@@ -155,7 +155,7 @@
                 {
                     //On clique sur l'élève, il est présent, on le met en absent, on change sa couleur (blanc -> gris)
                     eleveTrouve.setAbsent(true);
-                    eleve.setAttribute("class", "mb-2 p-2 cursor-pointer w-full eleve selected border-b border-gray-400 rounded-br rounded-bl");
+                    eleve.setAttribute("class", "p-2 cursor-pointer w-full eleve selected border-b border-gray-400 rounded-br rounded-bl");
 
                     var h3 = document.createElement("h3");
                     h3.innerText = eleveTrouve.nom + " " + eleveTrouve.prenom;
@@ -196,12 +196,12 @@
                     if (eleveTrouve.isJustifie()) {
                     //On clique sur l'élève, il est justifié, on le met en non justifié, on change sa couleur (gris -> blanc)
                     eleveTrouve.setJustifie(false);
-                    target.setAttribute("class", "mb-2 p-2 cursor-pointer w-full eleveAbsent border-b border-gray-400 rounded-br rounded-bl");
+                    target.setAttribute("class", "p-2 cursor-pointer w-full eleveAbsent border-b border-gray-400 rounded-br rounded-bl");
                     console.log(eleveTrouve.nom + " " + eleveTrouve.prenom + " n'est pas justifié");
                 } else {
                     //On clique sur l'élève, il est non justifié, on le met en justifié, on change sa couleur (blanc -> gris)
                     eleveTrouve.setJustifie(true);
-                    target.setAttribute("class", "mb-2 p-2 cursor-pointer w-full eleveAbsent selected border-b border-gray-400 rounded-br rounded-bl");
+                    target.setAttribute("class", "p-2 cursor-pointer w-full eleveAbsent selected border-b border-gray-400 rounded-br rounded-bl");
                     console.log(eleveTrouve.nom + " " + eleveTrouve.prenom + " est justifié");
                 }
             }
