@@ -43,11 +43,11 @@
 <nav>
     <ul class="flex justify-center items-center bg-[#989d97] p-2 md:p-4">
         <li class="mr-6">
-            <a href="./listerattrapages" class="text-sm text-gray-800 hover:text-gray-600 transition duration-300 transform hover:scale-105 p-2 md:p-4 bg-gray-300 hover:bg-gray-400 rounded-md">Liste des Devoirs</a>
+            <a href=" <?= base_url('./listerattrapages') ?> " class="text-sm text-gray-800 hover:text-gray-600 transition duration-300 transform hover:scale-105 p-2 md:p-4 bg-gray-300 hover:bg-gray-400 rounded-md">Liste des Devoirs</a>
         </li>
         <?php if (session()->get('estAdmin')): ?>
             <li class="mr-6">
-                <a href="./ajoutds" class="text-sm text-gray-800 hover:text-gray-600 transition duration-300 transform hover:scale-105 p-2 md:p-4 bg-gray-300 hover:bg-gray-400 rounded-md">Ajouter Absence</a>
+                <a href="<?= base_url('./ajoutds') ?>" class="text-sm text-gray-800 hover:text-gray-600 transition duration-300 transform hover:scale-105 p-2 md:p-4 bg-gray-300 hover:bg-gray-400 rounded-md">Ajouter un devoir</a>
             </li>
         <?php endif; ?>
     </ul>
