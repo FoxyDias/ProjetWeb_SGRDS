@@ -20,15 +20,10 @@ class ConnexionController extends BaseController
         $password = $this->request->getVar('password');
         $data = $modele_enseignant->getByEmail( $email );
 
-        var_dump($email);
-        var_dump($password);
-
         if($data){
             $pass = $data['mdpens'];
-            var_dump($pass);
             if(password_verify($password, $pass)){
-                var_dump($data);
-                if($data['estadmin'] == FALSE)
+                if($data['estadmin'] == 'f')
                 {
                     $ses_data = [
                         'idutilisateur' => $data['idens'],
