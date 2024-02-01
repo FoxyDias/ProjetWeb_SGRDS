@@ -217,7 +217,7 @@ document.getElementById('btnEnvoyer').addEventListener('click', function() {
     var donnees = {
         etudiants_absents: listeAbsent,
         etudiants_absents_justifies: listeAbsentJustifie,
-        devoir: <?php echo json_encode($lastId[0]); ?>
+        devoir: <?php echo json_encode($lastId); ?>
     };
     document.getElementById('donnees_js').value = JSON.stringify(donnees);;
 
