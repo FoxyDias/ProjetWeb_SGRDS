@@ -53,4 +53,9 @@ class EtuDSModel extends Model
         $this->db = \Config\Database::connect();
     }
 
+    public function getEtudiantsJustifies($idDevoir)
+    {
+        return $this->select('idetu')->where('iddevoir', $idDevoir)->where('absetu', 'justifie')->findAll();
+    }
+
 }

@@ -74,6 +74,45 @@ class AjoutElevesAbsentsController extends BaseController
             $etuDSDB->insert($donneesInsertion);
         }
 
+        $emailService = \Config\Services::email();
+        $from = 'iut-lehavre';
+        $emailService->setFrom($from);
+
+        $recipients = []; // Tableau pour stocker les adresses e-mail des destinataires
+
+        $devoir = new DevoirModel();
+        $devoir = $devoir->getInfoDevoir($idDevoir);
+
+        $enseignant = new EnseignantModel();
+        $enseignant = $enseignant->getEnseignant($devoir['idens']);
+
+        $recipients[] = $enseignant['adrens'];
+
+        $etuDSDB = new EtuDSModel();
+        $listeAbsents = $etuDSDB->getEtudiantsJustifies($idDevoir);
+
+        $timestampRat = strtotime($devoir['datedevoir']);
+        setlocale(LC_TIME, 'fr_FR.utf8');
+        date_default_timezone_set('Europe/Paris');
+        $formattedDate = strftime('%A %d %B %Y', $timestampRat);
+
+
+        $message = "Le DS du " . $formattedDate." a été ajouté par le directeur des études. Les absents justifiés sont :" ;
+
+        foreach ($listeAbsents as $absent) {
+            $etudiant = new EtudiantModel();
+            $etudiant = $etudiant->getEtudiant($absent['idetu']);
+            $message .= "\n" . $etudiant['prenometu'] . " " . $etudiant['nometu'];
+        }
+
+        $message .= "\n\nCordialement,\nLe Système de Gestion de Rattrapage de Devoir Surveillé.";
+
+
+        $emailService->setSubject('DS ajouté');
+        $emailService->setMessage($message);
+        $emailService->setTo($recipients);
+        $emailService->send();
+
         return redirect()->to('/listerattrapages');
     }
 }
