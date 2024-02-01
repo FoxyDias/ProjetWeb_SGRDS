@@ -76,7 +76,7 @@
                                    </div>
 
                                     <div class="mb-2 p-2 ">
-                                        <input type="text" id="salle" name="salle"  />
+                                        <input type="text" id="salle" name="salle" />
                                     </div>
                                      <div class="mb-2 p-2 rounded">
                                         <textarea name="commentaire" rows="12" cols="35"></textarea>
@@ -96,29 +96,29 @@
 </div>
 
 <script>
-document.addEventListener("disabledElement", function(){
-    var checkbox = document.queryElementById("nonRattrapage");
-    var date = document.queryElementById("date");
-    var time = document.queryElementById("time");
-    var duree = document.queryElementById("duree");
-    var papier = document.queryElementById("papier");
-    var machine = document.queryElementById("machine");
-    var salle = document.queryElementById("salle");
 
-    checkbox.addEventListener('change', function() {
-                               if (checkbox.checked) {
-                                 date = "disabled";
-                                 salle.value = "500";
+    document.addEventListener("DOMContentLoaded", function() {
 
-                               } else {
-                                 date = "";
-                                 salle ="";
-                               }
-                             });
+        var checkbox = document.queryElementById("nonRattrapage");
 
-}
+        var date = document.queryElementById("date");
+        var time = document.queryElementById("time");
+        var duree = document.queryElementById("duree");
+        var papier = document.queryElementById("papier");
+        var machine = document.queryElementById("machine");
+
+        var salle = document.queryElementById("salle");
 
 
+        checkbox.addEventListener('change', function()
+        {
+            var isChecked = checkbox.checked;
+
+            salle.disabled = !isChecked;
+
+        });
+
+   });
 
 
 
