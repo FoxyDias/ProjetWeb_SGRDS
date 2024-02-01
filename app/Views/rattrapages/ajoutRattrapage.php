@@ -90,7 +90,7 @@
                          <?php echo form_textarea(['name' => 'commentaire', 'id' => 'commentaire', 'rows' => '12', 'cols' => '35']); ?>
                      </div>
                      <div class="flex justify-center">
-                         <?php echo form_submit(['class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'], 'Valider'); ?>
+                         <?php echo form_submit(['class' => 'w-1/3 bg-gray-600 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded '], 'Valider'); ?>
                      </div>
                 </div>
             <?php echo form_close(); ?>
