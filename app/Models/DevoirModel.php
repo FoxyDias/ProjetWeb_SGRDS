@@ -40,7 +40,7 @@ class DevoirModel extends Model
                     'constraint' => '8',
                 ],
                 'datedevoir' => [
-                    'type' => 'DATE',
+                    'type' => 'timestamp',
                 ],
                 'idens' => [
                     'type' => 'INT',
