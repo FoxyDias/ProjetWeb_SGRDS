@@ -56,13 +56,35 @@ class EnseignantModel extends Model
         $this->db = \Config\Database::connect();
     }
 
+
+    public function getNomPrenomEnseignant(): array
+    {
+        return $this->select('idens,prenomens, nomens')->orderBy('nomens')->findAll();
+    }
+
+    public function getNomPrenomEnseignantById($idens)
+    {
+        return $this->select('prenomens, nomens')->where('idens', $idens)->first();
+    }
+
     public function getEnseignant($idens)
     {
         return $this->where('idens', $idens)->first();
+    }
+
+    public function getIdByEmail($adrens)
+    {
+        return $this->select('idens')->where('adrens', $adrens)->first();
     }
 
     public function getByEmail($adrens)
     {
         return $this->where('adrens', $adrens)->first();
     }
+
+    public function getByIdens($idens)
+    {
+        return $this->where('idens', $idens)->first();
+    }
+
 }
