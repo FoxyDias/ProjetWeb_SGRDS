@@ -45,15 +45,14 @@
                         <p class ="<?= $couleur; ?>"><?= $etat; ?></p>
                         <p><?= $ds['dateRat'];?></p>
                         <!-- Si nous sommes admins -->
-
+                        <?php if (session()->get('estAdmin')) : ?>
                             <!-- Si l'état est "En attente" -->
                             <?php if ($ds['etatRat'] == 'En attente') : ?>
                                 <div class="">
                                     <a href="<?= site_url('ajoutrattrapage/' . $ds['idDS']);?>" class="underline">Prévoir le rattrapage</a>
                                 </div>
-
+                            <?php endif; ?>
                         <?php endif; ?>
-
                     </div>
                 </div>
             <?php endforeach; ?>
