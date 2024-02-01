@@ -3,128 +3,96 @@
          <div class="bg-gray-100 font-sans shadow-md rounded-[12px] border-gray-500 border-2 p-4  overflox-y-auto">
 
             <div class="mb-2 p-2 flex justify-center rounded">
-                   <div class="flex justify-start mb-2">
-                       <label class="mr-4">
-                           <input type="checkbox" id="nonRattrapage" value="nonRattrapage"> Non-rattrapage
-                       </label>
-                   </div>
+               <div class="flex justify-start mb-2">
+                   <label class="mr-4">
+                       <input type="checkbox" id="nonRattrapage" value="nonRattrapage"> Non-rattrapage
+                   </label>
                </div>
+           </div>
 
+         <!-- Le formulaire préconstruit initialement caché -->
+         <div class="h-full">
+             <?php echo form_open("/ajoutrattrapage/{$iddevoir}/traitement", ['id' => 'prebuiltForm', 'class' => 'text-center h-1/2']); ?>
 
-                   <!-- Le formulaire préconstruit initialement caché -->
-                   <div class="h-full">
-                       <form action="/ajoutrattrapage/<?=$iddevoir?>/traitement" id="prebuiltForm" class="text-center h-1/2">
+             <div class="flex justify-center">
+                 <div class="flex flex-col w-1/2">
+                     <div class="mb-2 p-2 rounded text-right">
+                         <label for="date">Date du DS de rattrapage :</label>
+                     </div>
+                     <div class="mb-2 p-2 rounded text-right">
+                         <label for="horaire-debut">Horaire début :</label>
+                     </div>
+                     <div class="mb-2 p-2 rounded text-right">
+                         <label for="duree">Durée :</label>
+                     </div>
+                     <div class="mb-2 p-2 rounded text-right">
+                         <label>Type :</label>
+                     </div>
+                     <div class="mb-2 p-2 rounded text-right">
+                         <label for="salle">Salle :</label>
+                     </div>
+                     <div class="mb-2 p-2 rounded text-right">
+                         <label for="commentaire">Commentaire :</label>
+                     </div>
+                 </div>
 
-                           <div class="flex justify-center">
-                               <div class="flex flex-col w-1/2">
-                                   <div class="mb-2 p-2 rounded text-right">
-                                       <label for="date">Date du DS de rattrapage :</label>
-                                   </div>
-                                   <div class="mb-2 p-2 rounded text-right">
-                                      <label for="horaire-début">Horaire début :</label>
-                                   </div>
-                                    <div class="mb-2 p-2 rounded text-right">
-                                       <label for="duree">Durée :</label>
-                                   </div>
-                                   <div class="mb-2 p-2 rounded text-right">
-                                       <label>Type :</label>
-                                   </div>
-                                   <div class="mb-2 p-2 rounded text-right">
-                                       <label for="salle">Salle :</label>
-                                   </div>
-                                   <div class="mb-2 p-2 rounded text-right">
-                                      <label for="commentaire">Commentaire :</label>
-                                  </div>
-                               </div>
+                 <div class="flex flex-col w-3/4">
+                     <div class="mb-2 p-2 rounded">
+                         <?php echo form_input(['name' => 'date', 'id' => 'date', 'class' => 'elementDS', 'type' => 'date']); ?>
+                     </div>
 
+                     <div class="mb-2 p-2 rounded">
+                         <?php echo form_input(['name' => 'time', 'id' => 'time', 'class' => 'elementDS', 'type' => 'time']); ?>
+                     </div>
 
-                               <div class="flex flex-col w-3/4">
-                                   <div class="mb-2 p-2 rounded">
-                                       <input type="date" id="date" name="date" class="elementDS">
-                                   </div>
-                                   <div class="mb-2 p-2 rounded">
-                                      <input type="time" id="time" name="time" class="elementDS">
-                                  </div>
-                                   <div class="mb-2 p-2 rounded">
-                                      <select id="duree" name="duree" class="elementDS">
-                                            <option value="">--Choisir la durée du DS--</option>
-                                            <option value="1h">1h</option>
-                                            <option value="1h15">1h15</option>
-                                            <option value="1h30">1h30</option>
-                                            <option value="1h45">1h45</option>
-                                            <option value="2h">2h</option>
-                                            <option value="2h15">2h15</option>
-                                            <option value="2h30">2h30</option>
-                                            <option value="2h45">2h45</option>
-                                            <option value="3h">3h</option>
-                                            <option value="3h15">3h15</option>
-                                            <option value="3h30">3h30</option>
-                                            <option value="3h45">3h45</option>
-                                            <option value="4h">4h</option>
-                                      </select>
-                                  </div>
-                                   <div class="mb-2 p-2 flex justify-center rounded">
-                                       <div class="flex justify-start mb-2">
-                                           <label class="mr-4">
-                                               <input type="radio" id="papier" value="papier" class="elementDS"> Papier
-                                           </label>
-                                           <label>
-                                               <input type="radio" id="machine" value="machine" class="elementDS"> Machine
-                                           </label>
-                                       </div>
-                                   </div>
+                     <div class="mb-2 p-2 rounded">
+                         <?php
+                         $options = [
+                             '' => '--Choisir la durée du DS--',
+                             '1h' => '1h',
+                             '1h15' => '1h15',
+                             '1h30' => '1h30',
+                             '1h45' => '1h45',
+                             '2h' => '2h',
+                             '2h15' => '2h15',
+                             '2h30' => '2h30',
+                             '2h45' => '2h45',
+                             '3h' => '3h',
+                             '3h15' => '3h15',
+                             '3h30' => '3h30',
+                             '3h45' => '3h45',
+                             '4h' => '4h',
+                         ];
+                         echo form_dropdown('duree', $options, '', 'id="duree" class="elementDS"');
+                         ?>
+                     </div>
 
-                                    <div class="mb-2 p-2 ">
-                                        <input type="text" id="salle" name="salle" class="elementDS"/>
-                                    </div>
-                                     <div class="mb-2 p-2 rounded">
-                                        <textarea id="commentaire" name="commentaire" rows="12" cols="35"></textarea>
-                                    </div>
-                               </div>
-                           </div>
-                           <div class="flex justify-center">
-                               <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Valider</button>
-                           </div>
-                       </form>
-                   </div>
-               </div>
+                     <div class="mb-2 p-2 flex justify-center rounded">
+                         <div class="flex justify-start mb-2">
+                             <label class="mr-4">
+                                 <?php echo form_radio(['name' => 'type', 'id' => 'papier', 'value' => 'papier', 'class' => 'elementDS']); ?>
+                                 Papier
+                             </label>
+                             <label>
+                                 <?php echo form_radio(['name' => 'type', 'id' => 'machine', 'value' => 'machine', 'class' => 'elementDS']); ?>
+                                 Machine
+                             </label>
+                         </div>
+                     </div>
 
+                     <div class="mb-2 p-2 ">
+                         <?php echo form_input(['name' => 'salle', 'id' => 'salle', 'class' => 'elementDS']); ?>
+                     </div>
 
-             </div>
-
+                     <div class="mb-2 p-2 rounded">
+                         <?php echo form_textarea(['name' => 'commentaire', 'id' => 'commentaire', 'rows' => '12', 'cols' => '35']); ?>
+                     </div>
+                     <div class="flex justify-center">
+                         <?php echo form_submit(['class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'], 'Valider'); ?>
+                     </div>
+                </div>
+            <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
 </div>
-
-<script>
-/*
-    document.addEventListener("DOMContentLoaded", function() {
-
-        var checkbox = document.queryElementById('nonRattrapage');
-
-        var date = document.queryElementById("date");
-        var time = document.queryElementById("time");
-        var duree = document.queryElementById("duree");
-        var papier = document.queryElementById("papier");
-        var machine = document.queryElementById("machine");
-        var salle = document.queryElementById("salle");
-
-        var elementsDS = document.querySelectorAll('.elementDS');
-
-
-        checkbox.addEventListener('change', function()
-        {
-            var isChecked = checkbox.checked;
-
-            elementsDS.forEach(function(elementDS){
-                elementDS.disabled = !isChecked;
-            });
-
-        });
-
-
-
-   });
-
-*/
-
-
-</script>

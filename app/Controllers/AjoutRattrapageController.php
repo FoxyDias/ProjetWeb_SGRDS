@@ -22,44 +22,43 @@ class AjoutRattrapageController extends BaseController
 
     public function traitement($iddevoir)
     {
-        $request = \Config\Services::request();
 
-        $date = $request->getPost('date');   //??????
-        $heure = $request->getPost('time');   //??????
+        if(isset($_POST['nonRattrapage']))
+        {
+            //cas ou c'est un rattrapage
 
-        var_dump($date);
-        var_dump($heure);
+            $request = \Config\Services::request();
 
-        $duree = $request->getPost('duree');
+            $date = $request->getPost('date');
+            $heure = $request->getPost('time');
+            var_dump($date);
+            var_dump($heure);
 
-       // $type = $request->getPost('');       //??????
+            $salle = $request->getPost('salle');
+            $type = $request->getPost('type');
+            $comm = $request->getPost('commentaire');
+            $duree = $request->getPost('duree');
+
+            $modele_rattrapage = new RattrapageModel();
+
+            $modele_rattrapage->set('etatrat', "Programmé")
+            ->set('daterat', $date)
+            ->set('sallerat', $salle)
+            ->set('typerat', $type)
+            ->set('commrat', $comm)
+            ->set('sallerat', $salle)
+            ->set('dureerat', $duree)
+            ->set('iddevoir', $iddevoir)
+            ->update($user['$iddevoir']);
 
 
-        $salle = $request->getPost('salle');
-        $comm = $request->getPost('commentaire');
+            // echo view('listeRattrapages');
+        }
+        else
+        {
+            //cas ou ce n'est pas un rattrapage
 
-
-
-
-        //$modele_rattrapage = new RattrapageModel();
-
-/*
-        $modele_rattrapage->set('idrat', $)  //??????
-        ->set('etatrat', $etat)              //??????
-        ->set('daterat', $date)
-        ->set('sallerat', $salle)
-        ->set('typerat', $type)              //??????
-        ->set('commrat', $comm)
-        ->set('sallerat', $salle)
-        ->set('dureerat', $duree)
-        ->set('iddevoir', $iddevoir)
-        ->update($user['id']);              //dois update where iddevoir de DS = iddevoir de DS rattrapage  //??????
-*/
-
-       // echo view('listeRattrapages');
-
+        }
 
     }
-
-
 }
