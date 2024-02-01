@@ -38,11 +38,10 @@ class AjoutElevesAbsentsController extends BaseController
                 $promo = 3;
                 break;
         }
-        $eleves = $elevesDB->getNomPrenomEtudiantByPromo($promo);
-        $id = $elevesDB->getallId();
+        $eleves = $elevesDB->getNomPrenomIdEtudiantByPromo($promo);
 
         echo view('communs/enTete', $data = ['titre' => 'Ajout DS']);
-        echo view('DS/ajout_eleves_absents', ['lastId'=> $dernierDevoir,'infoDevoir' => $infoDevoir, 'infoRessource' => $infoRessource, 'infoEnseignant' => $infoEnseignant, 'eleves' => $eleves, 'id' => $id]);
+        echo view('DS/ajout_eleves_absents', ['lastId'=> $dernierDevoir,'infoDevoir' => $infoDevoir, 'infoRessource' => $infoRessource, 'infoEnseignant' => $infoEnseignant, 'eleves' => $eleves]);
         echo view('communs/basDePage');
     }
 

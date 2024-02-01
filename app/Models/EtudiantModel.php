@@ -58,8 +58,8 @@ class EtudiantModel extends Model
     {
         return $this->select('prenometu, nometu')->where('promoetu', $promo)->orderBy('nometu')->findAll();
     }
-    public function getallId()
+    public function getNomPrenomIdEtudiantByPromo($promo)
     {
-        return $this->select('idetu')->findAll();
+        return $this->select('prenometu, nometu, idetu')->where('promoetu', $promo)->orderBy('nometu')->findAll();
     }
 }

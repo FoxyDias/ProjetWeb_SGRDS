@@ -85,7 +85,7 @@
                         <h3><?=$eleve['nometu']." ".$eleve['prenometu']?></h3>
                     </div>
                     <script>
-                        var eleve = new Eleve("<?=$eleve['nometu']?>", "<?=$eleve['prenometu']?>", <?=$id[$cpt++]['idetu']?>);
+                        var eleve = new Eleve("<?=$eleve['nometu']?>", "<?=$eleve['prenometu']?>", <?=$eleve['idetu']?>);
                         listeEleve.push(eleve);
                     </script>
                 <?php endforeach; ?>
