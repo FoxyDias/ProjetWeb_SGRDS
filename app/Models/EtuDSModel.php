@@ -6,7 +6,7 @@ use CodeIgniter\Model;
 
 class EtuDSModel extends Model
 {
-    protected $table = 'devoirs_sgrds';
+    protected $table = 'etuds_sgrds';
     protected $allowedFields = [
         'idetuds',
         'absetu',
