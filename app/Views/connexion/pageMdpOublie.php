@@ -1,11 +1,9 @@
 <div class="bg-[#adbfcf]">
     <!-- fleche -->
-    <div class="md:flex md:items-center mb-6">
+    <div class="absolute md:flex md:items-center mb-6">
         <div class="md:w-2/3">
-            <a href="./connexion" class="text-gray-500 hover:text-gray-700">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                </svg>
+            <a href="./connexion" >
+                <img src="<?= base_url('/images/fleche_retour.png'); ?>" >
             </a>
         </div>
     </div>
