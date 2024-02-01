@@ -14,7 +14,7 @@ class AjoutRattrapageController extends BaseController
         helper(['form']);
 
         echo view('communs/enTete', $data = ['titre' => 'Création rattrapage'] );
-        echo view('rattrapages/ajoutRattrapage');
+        echo view('rattrapages/ajoutRattrapage/');
         echo view('communs/basDePage');
 
     }
@@ -25,7 +25,7 @@ class AjoutRattrapageController extends BaseController
 
         $date => $request->getPost('date');
         $duree => $request->getPost('duree');
-        $type => $request->getPost('');    //????
+        $type => $request->getPost('');       //????
         $salle => $request->getPost('salle');
         $comm => $request->getPost('commentaire');
 
@@ -35,25 +35,21 @@ class AjoutRattrapageController extends BaseController
         $modele_rattrapage = new RattrapageModel();
 
 
-        $modele_rattrapage->set('idrat', $)
-        ->set('etatrat', $etat) //??????
+        $modele_rattrapage->set('idrat', $)  //??????
+        ->set('etatrat', $etat)          //??????
         ->set('daterat', $date)
         ->set('sallerat', $salle)
-        ->set('typerat', $type) //????????
+        ->set('typerat', $type)        //????????
         ->set('commrat', $comm)
         ->set('sallerat', $salle)
         ->set('dureerat', $duree)
         ->set('iddevoir', $iddevoir)
-        ->update($user['id']);
-
+        ->update($user['id']);    //dois update where iddevoir de DS = iddevoir de DS rattrapage
 
 
         echo view('listeRattrapages');
 
 
-
     }
-
-
 
 }
