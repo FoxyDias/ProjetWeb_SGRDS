@@ -51,7 +51,7 @@ $enseignant = "Philippe LEPIVERT";
 
 <div>
     <!--Div contenant la flèche et le rappel des infos entrées auparavant -->
-    <div class="w-3/5 flex flex-row justify-between">
+    <div class="w-3/5 flex flex-row justify-between mt-10">
 
         <!--Flèche de retours -->
         <div class="inline-block">
@@ -110,15 +110,15 @@ $enseignant = "Philippe LEPIVERT";
                 </div>
                 <!--Tableau de la liste des élèves absents-->
                 <div class="w-1/3 ">
-                    <div class="ml-10 mt-5 flex flex-col border border-gray-400 rounded-xl w-auto text-center mr-auto">
+                    <div class="ml-10 mt-5 flex flex-col border border-gray-400 rounded-xl w-auto text-center mr-auto hidden">
                         <div class="deuxieme_tableau"></div>
                     </div>
                 </div>
             </div>
             <div class="flex justify-center mt-10">
-                <form id="formAbsence" action="<?= base_url('ajout_etudiants_absents/traitement')?>" method="post">
+                <form id="formAbsence" class="p-2 border border-gray-400 rounded-2xl" action="<?= base_url('ajout_etudiants_absents/traitement')?>" method="post">
                     <input id="donnees_js" name="donnees_js" type="hidden" value="" />
-                    <input type="submit" value="Valider" id="btnEnvoyer"/>
+                    <input type="submit" value="Confirmer" id="btnEnvoyer" />
                 </form>
             </div>
         </div>
@@ -149,6 +149,10 @@ $enseignant = "Philippe LEPIVERT";
                     eleve.setAttribute("class", "mb-2 p-2 cursor-pointer w-full eleve border-b border-gray-400 rounded-br rounded-bl");
 
                     tableau.removeChild(elevePresentDansTableau.parentNode);
+                    if (tableau.childElementCount == 0) {
+                        tableau.parentNode.classList.add('hidden');
+                        tableau.parentNode.classList.remove('block');
+                    }
                     return;
                 }
                 else
@@ -163,11 +167,13 @@ $enseignant = "Philippe LEPIVERT";
                     h3.setAttribute("data-prenom", eleveTrouve.prenom);
 
                     var div = document.createElement("div");
-                    div.setAttribute("class", "mb-2 p-2 cursor-pointer w-full eleveAbsent border-b border-gray-400 rounded-br rounded-bl");
+                    div.setAttribute("class", "p-2 cursor-pointer w-full eleveAbsent border-b border-gray-400 rounded-br rounded-bl");
                     div.setAttribute("data-id", eleveTrouve.nom + " " + eleveTrouve.prenom);
 
                     div.appendChild(h3);
                     tableau.appendChild(div);
+                    tableau.parentNode.classList.add('block');
+                    tableau.parentNode.classList.remove('hidden');
 
                     var elevesAbs = document.querySelectorAll('.eleveAbsent');
                     return
