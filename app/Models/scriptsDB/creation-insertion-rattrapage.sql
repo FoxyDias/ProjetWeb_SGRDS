@@ -6,7 +6,7 @@
 CREATE TABLE rattrapages_sgrds (
     idRat serial primary key,
     etatRat varchar(50) NOT NULL CHECK (etatRat IN ('Programmé', 'Neutralisé', 'En attente')),
-    dateRat date ,
+    dateRat timestamp ,
     salleRat varchar(50) ,
     typeRat varchar(50) ,
     commRat text,
@@ -20,6 +20,6 @@ CREATE TABLE rattrapages_sgrds (
 -- Rattrapage 1
 
 INSERT INTO rattrapages_sgrds (etatRat, dateRat, salleRat, typeRat, commRat, dureeRat, idDevoir) VALUES
-('Programmé', '2024-04-05', '715', 'Machine', 'Rattrapage de la matière', '1h00', 1),
+('Programmé', '2024-04-05 15:00:00', '715', 'Machine', 'Rattrapage de la matière', '1h00', 1),
 ('En attente', null , null , null , null , null , 3),
 ('Neutralisé', null , null , null , null , null , 2);

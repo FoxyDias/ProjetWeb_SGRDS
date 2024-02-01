@@ -40,7 +40,7 @@ class RattrapageModel extends Model
                     'constraint' => '50',
                 ],
                 'daterat' => [
-                    'type' => 'DATE',
+                    'type' => 'timestamp',
                 ],
                 'sallerat' => [
                     'type' => 'VARCHAR',
