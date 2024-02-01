@@ -11,11 +11,10 @@ class RattrapageModel extends Model
         'idrat',
         'etatrat',
         'daterat',
-        'daterat',
-        'salleRat',
-        'typeRat',
-        'commRat',
-        'dureeRat',
+        'sallerat',
+        'typerat',
+        'commrat',
+        'dureerat',
         'iddevoir',
     ];
 
