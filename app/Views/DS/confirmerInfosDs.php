@@ -21,7 +21,12 @@
         </div>
         <div class="flex">
             <p>
-                <?= $dataForm['datedevoir']; ?> - DS <?= $dataForm['typedevoir']; ?> - <?= $dataForm['dureedevoir']; ?>
+                <?php     $timestampRat = strtotime($dataForm['datedevoir']);
+                setlocale(LC_TIME, 'fr_FR.utf8');
+                date_default_timezone_set('Europe/Paris');
+                $formattedDateDevoir = strftime('Le %A %d %B %Y', $timestampRat);
+                ?>
+                <?= $formattedDateDevoir; ?> - DS <?= $dataForm['typedevoir']; ?> - <?= $dataForm['dureedevoir']; ?>
             </p>
         </div>
         <div class="flex">
