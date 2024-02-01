@@ -13,7 +13,7 @@
 
                    <!-- Le formulaire préconstruit initialement caché -->
                    <div class="h-full">
-                       <form action="./ajoutrattrapage/<?=$iddevoir?>/traitement" id="prebuiltForm" class="text-center h-1/2">
+                       <form action="/ajoutrattrapage/<?=$iddevoir?>/traitement" id="prebuiltForm" class="text-center h-1/2">
 
                            <div class="flex justify-center">
                                <div class="flex flex-col w-1/2">
