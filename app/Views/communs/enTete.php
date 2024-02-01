@@ -10,14 +10,14 @@
     <link rel="stylesheet" href="/output.css">
 </head>
 
-<body>
+<body class="flex flex-col min-h-screen">
 <header class="relative bg-white left-0 p-4">
 
     <div class="flex justify-between items-center">
         <img src="/img/logoDepInformatique.gif" alt="Département informatique" class="h-9 md:h-16 lg:h-18">
 
             <?php if (session()->get('estProf')): ?>
-                <a href="./deconnexion" class="flex items-center rounded-[35px] bg-[#989d97] p-2 md:p-4 h-9 md:h-16 lg:h-18 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-gray-300 duration-300 relative group">
+                <a href="/deconnexion" class="flex items-center rounded-[35px] bg-[#989d97] p-2 md:p-4 h-9 md:h-16 lg:h-18 transition ease-in-out delay-50 hover:-translate-y-1 hover:scale-110 hover:bg-gray-300 duration-300 relative group">
                     <img src="/img/person-svgrepo-com.png" alt="Département informatique" class="w-10 h-10">
                     <div class="ml-5">
                         <span class="group-hover:opacity-0 ease-in-out duration-100">
@@ -52,4 +52,7 @@
         <?php endif; ?>
     </ul>
 </nav>
+<main class="flex-1">
+    <!-- Contenu principal de la page va ici -->
+
 

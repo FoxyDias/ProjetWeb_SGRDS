@@ -27,6 +27,15 @@
                         ?>
 
                         <p><?= $ds['prenomEns'];?> <?= $ds['nomEns'];?></p>
+                        <!-- Si l'état est "En attente" -->
+                        <?php if ($ds['etatRat'] == 'En attente') : ?>
+                            <!-- Si nous sommes admins -->
+                            <?php if (session()->get('estAdmin')) : ?>
+                                <div class="">
+                                    <a href="<?= site_url('ajout_etudiants_absents/'.$ds['idDS']);?>" class="underline">Gérer les absences</a>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
                     </div>
 
                     <div class="text-right ml-auto">
