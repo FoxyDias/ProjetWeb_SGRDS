@@ -2,14 +2,14 @@
     <h1> Sélectionner le semestre : </h1>
 </div>
 
-<div class="ml-10 mt-5 EnsembleSemestres w-1/2 border border-gray-500 flex flex-row ">
+<div class="ml-10 mt-5 EnsembleSemestres w-3/4 rounded-xl border border-gray-500 flex flex-row ">
     <div class="flex flex-col w-full justify-center">
         <div>
-            <h3 class="text-center border border-gray-500">BUT 1</h3>
+            <h3 class="text-center rounded-xl border border-gray-500">BUT 1</h3>
         </div>
-        <div class="flex flex-row justify-center  border border-gray-500   border-collapse">
+        <div class="flex flex-row justify-center  rounded-xl border border-gray-500   border-collapse">
             <?php for ($i = 1; $i <= 2; $i++) : ?>
-                <div class="mb-2 border p-2 m-2 cursor-pointer" onclick="handleClick(this, <?=$i?>)" >
+                <div class="mb-2 border p-2 m-2 rounded-xl cursor-pointer" onclick="handleClick(this, <?=$i?>)" >
                     <h3>Semestre <?=$i?></h3>
                 </div>
             <?php endfor; ?>
@@ -17,11 +17,11 @@
     </div>
     <div class="flex flex-col w-full justify-center">
         <div>
-            <h3 class="text-center border border-gray-500">BUT 2</h3>
+            <h3 class="text-center rounded-xl border border-gray-500">BUT 2</h3>
         </div>
-        <div class="flex flex-row justify-center border border-gray-500  border-collapse">
+        <div class="flex flex-row justify-center rounded-xl border border-gray-500  border-collapse">
             <?php for ($i = 3; $i <= 4; $i++) : ?>
-                <div class="mb-2 border p-2 m-2 cursor-pointer" onclick="handleClick(this, <?=$i?>)" >
+                <div class="mb-2 border p-2 m-2 rounded-xl cursor-pointer" onclick="handleClick(this, <?=$i?>)" >
                     <h3>Semestre <?=$i?></h3>
                 </div>
             <?php endfor; ?>
@@ -29,11 +29,11 @@
     </div>
     <div class="flex flex-col w-full justify-center">
         <div>
-            <h3 class="text-center border border-gray-500">BUT 3</h3>
+            <h3 class="text-center rounded-xl border border-gray-500">BUT 3</h3>
         </div>
-        <div class="flex flex-row justify-center border border-gray-500 border-collapse">
+        <div class="flex flex-row justify-center  rounded-xl border border-gray-500 border-collapse">
             <?php for ($i = 5; $i <= 6; $i++) : ?>
-                <div class="mb-2 border p-2 m-2 cursor-pointer" onclick="handleClick(this, <?=$i?>)" >
+                <div class="mb-2 border p-2 m-2 rounded-xl cursor-pointer" onclick="handleClick(this, <?=$i?>)" >
                     <h3>Semestre <?=$i?></h3>
                 </div>
             <?php endfor; ?>
@@ -59,6 +59,7 @@
                 <?php endforeach; ?>
             </div>
         </div>
+
         <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex border border-gray-600 mt-5">
             <!-- Le formulaire préconstruit initialement caché -->
             <div class="h-full">
