@@ -1,3 +1,13 @@
+<div class="flex w-1/5 ml-5 cursor-pointer">
+    <img src="<?= base_url('/images/fleche_retour.png'); ?>" alt="retour" class="w-1/5" onclick="customConfirm()">
+</div>
+<div id="custom-alert" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 border border-gray-300 rounded-[18px] shadow-md z-50 hidden">
+    <p>Voulez-vous vraiment annuler l'ajout du DS ?</p>
+    <div class="mt-4 text-right">
+        <button class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400" onclick="cancelAction()">Annuler</button>
+        <button class="px-4 py-2 bg-blue-500 text-white rounded hover:bg-[#]" onclick="confirmAction()">Confirmer</button>
+    </div>
+</div>
 <div class="mx-auto flex justify-center border border-gray-600 rounded-[18px] border-4 text-2xl " style="width: 850px ; height: 300px;" >
     <div class="flex flex-col w-full justify-between items-center">
         <div class="flex">
@@ -32,3 +42,18 @@
 
     </div>
 </div>
+
+<script>
+    function customConfirm() {
+        document.getElementById('custom-alert').style.display = 'block';
+    }
+
+    function cancelAction() {
+        document.getElementById('custom-alert').style.display = 'none';
+    }
+
+    function confirmAction() {
+        window.history.back();
+
+    }
+</script>

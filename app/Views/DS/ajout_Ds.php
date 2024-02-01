@@ -45,7 +45,7 @@
 
 <?php if (isset($ressources)) : ?>
     <div class="ml-10 mt-5 ChoixRessource">
-        <h1>Sélectionner la ressource :</h1>
+        <h1>Sélectionner une ressource du semestre <?=$numSemestre?> :</h1>
     </div>
     <div class="flex">
         <div class=" w-1/5">
@@ -62,7 +62,7 @@
         <div id="formulaireContainer" style="display: none; width: 600px; height: 400px; margin-left: 15%;" class="flex border border-gray-600">
             <!-- Le formulaire préconstruit initialement caché -->
             <div class="h-full">
-                <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>">
+                <form id="prebuiltForm" class="text-center h-1/2" action="<?=site_url('formAjouterDs')?>" method="post">
                     <h3 id="nomRessourcePlaceholder" data-id-ressource=""> class="mt-5"></h3>
                     <input type="hidden" id="idRessource" name="idRessource" value="">
 
