@@ -47,6 +47,10 @@ class ListeRattrapagesController extends BaseController
                 'semRes' => $semRes,
                 'etatRat' => $rat['etatrat'],
                 'dateRat' => $rat['daterat'],
+                'salleRat' => $rat['sallerat'],
+                'typeRat' => $rat['typerat'],
+                'dureeRat' => $rat['dureerat'],
+                'commentaireRat' => $rat['commrat'],
             ];
         }
 
