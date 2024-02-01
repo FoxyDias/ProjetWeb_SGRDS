@@ -95,9 +95,18 @@ class DevoirModel extends Model
         return $row->semres;
     }
 
+
+    public function getLastIdDS()
+    {
+        $query = $this->db->query("SELECT iddevoir FROM devoirs_sgrds ORDER BY iddevoir DESC LIMIT 1");
+        $row = $query->getRow();
+        return $row->iddevoir;
+    }
+
     public function getIdDevoir($typedevoir, $dureedevoir, $datedevoir, $idens, $idres)
     {
         return $this->select('iddevoir')->where('typedevoir', $typedevoir)->where('dureedevoir', $dureedevoir)->where('datedevoir', $datedevoir)->where('idens', $idens)->where('idres', $idres)->first();
+
     }
 
 }
