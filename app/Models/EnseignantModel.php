@@ -5,6 +5,7 @@ use CodeIgniter\Model;
 class EnseignantModel extends Model
 {
     protected $table = 'enseignants_sgrds';
+    protected $primaryKey = 'idens';
     protected $allowedFields = [
         'idens',
        'nomens',
@@ -43,7 +44,7 @@ class EnseignantModel extends Model
                     'type' => 'VARCHAR',
                     'constraint' => '255',
                 ],
-                'estAdmin' => [
+                'estadmin' => [
                     'type' => 'BOOLEAN',
                 ],
             ];
@@ -55,7 +56,6 @@ class EnseignantModel extends Model
         // charger les données
         $this->db = \Config\Database::connect();
     }
-
 
     public function getNomPrenomEnseignant(): array
     {

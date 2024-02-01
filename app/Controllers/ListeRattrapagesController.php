@@ -16,6 +16,7 @@ class ListeRattrapagesController extends BaseController
         $allDS = $modele_DS -> findAll();
         $allRattrapages = $modele_Rattrapage -> findAll();
 
+
         $lstDS = [];
 
         foreach ( $allDS as $ds )
@@ -46,6 +47,10 @@ class ListeRattrapagesController extends BaseController
                 'semRes' => $semRes,
                 'etatRat' => $rat['etatrat'],
                 'dateRat' => $rat['daterat'],
+                'salleRat' => $rat['sallerat'],
+                'typeRat' => $rat['typerat'],
+                'dureeRat' => $rat['dureerat'],
+                'commentaireRat' => $rat['commrat'],
             ];
         }
 

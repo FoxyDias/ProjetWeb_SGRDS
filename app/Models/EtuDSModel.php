@@ -6,9 +6,10 @@ use CodeIgniter\Model;
 
 class EtuDSModel extends Model
 {
-    protected $table = 'devoirs_sgrds';
+    protected $table = 'etuds_sgrds';
     protected $allowedFields = [
         'idetuds',
+        'absetu',
         'iddevoir',
         'idetu',
 
@@ -29,6 +30,10 @@ class EtuDSModel extends Model
                 'idetuds' => [
                     'type' => 'INT',
                     'auto_increment' => true
+                ],
+                'absetu' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => '50',
                 ],
                 'iddevoir' => [
                     'type' => 'INT',

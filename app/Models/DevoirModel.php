@@ -40,7 +40,7 @@ class DevoirModel extends Model
                     'constraint' => '8',
                 ],
                 'datedevoir' => [
-                    'type' => 'DATE',
+                    'type' => 'timestamp',
                 ],
                 'idens' => [
                     'type' => 'INT',
@@ -95,6 +95,7 @@ class DevoirModel extends Model
         return $row->semres;
     }
 
+
     public function getLastIdDS()
     {
         $query = $this->db->query("SELECT iddevoir FROM devoirs_sgrds ORDER BY iddevoir DESC LIMIT 1");
@@ -102,6 +103,11 @@ class DevoirModel extends Model
         return $row->iddevoir;
     }
 
+    public function getIdDevoir($typedevoir, $dureedevoir, $datedevoir, $idens, $idres)
+    {
+        return $this->select('iddevoir')->where('typedevoir', $typedevoir)->where('dureedevoir', $dureedevoir)->where('datedevoir', $datedevoir)->where('idens', $idens)->where('idres', $idres)->first();
+
+    }
     public function getInfoDevoir($iddevoir) : array
     {
         return $this->where('iddevoir', $iddevoir)->first();
@@ -113,11 +119,4 @@ class DevoirModel extends Model
         $row = $query->getRow();
         return $row;
     }
-
-    public function getIdDevoir($typedevoir, $dureedevoir, $datedevoir, $idens, $idres)
-    {
-        return $this->select('iddevoir')->where('typedevoir', $typedevoir)->where('dureedevoir', $dureedevoir)->where('datedevoir', $datedevoir)->where('idens', $idens)->where('idres', $idres)->first();
-
-    }
-
 }

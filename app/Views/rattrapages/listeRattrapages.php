@@ -1,4 +1,4 @@
- <div class="bg-gray-100 font-sans leading-normal tracking-normal">
+ <div class="bg-[#adbfcf] font-sans leading-normal tracking-normal">
     <div class="container mx-auto p-4">
 
         <h1 class="text-2xl text-gray-800 font-bold mb-4">Liste de rattrapage</h1>
@@ -15,7 +15,17 @@
                 <div class="border border-gray-400 border-collapse border-b-2 border-t-0 border-l-0 border-r-0 flex justify-between items-start p-4">
                     <div>
                         <p>Semestre <?= $ds['semRes']; ?> - <?= $ds['nomRes']; ?> </p>
-                        <p><?= $ds['dateDS'];?> - DS <?= $ds['typeDS'];?> - <?= $ds['dureeDS'];?></p>
+
+                        <?php
+                        $timestamp = strtotime($ds['dateDS']);
+                        setlocale(LC_TIME, 'fr_FR.utf8');
+                        date_default_timezone_set('Europe/Paris');
+                        $formattedDate = strftime('Le %d %B %Y', $timestamp);
+
+                        // Afficher le résultat
+                        echo "<p>{$formattedDate} - DS {$ds['typeDS']} - {$ds['dureeDS']}</p>";
+                        ?>
+
                         <p><?= $ds['prenomEns'];?> <?= $ds['nomEns'];?></p>
                     </div>
 
@@ -43,16 +53,29 @@
                         ?>
 
                         <p class ="<?= $couleur; ?>"><?= $etat; ?></p>
-                        <p><?= $ds['dateRat'];?></p>
-                        <!-- Si nous sommes admins -->
-                        <?php if (session()->get('role') == 'prof') : ?>
-                            <!-- Si l'état est "En attente" -->
-                            <?php if ($ds['etatRat'] == 'En attente') : ?>
+
+                        <!-- Si l'état est "En attente" -->
+                        <?php if ($ds['etatRat'] == 'En attente') : ?>
+                            <!-- Si nous sommes admins -->
+                            <?php if (session()->get('estAdmin')) : ?>
                                 <div class="">
-                                    <a class="underline" href="">Prévoir le rattrapage</a>
+                                    <a href="<?= site_url('ajoutrattrapage/' . $ds['idDS']);?>" class="underline">Prévoir le rattrapage</a>
                                 </div>
                             <?php endif; ?>
+                        <?php elseif ( $ds['etatRat'] == 'Programmé' ) : ?>
+                            <?php
+                            // Supposons que $ds['dateRat'] soit une chaîne de caractères représentant une date
+                            $timestampRat = strtotime($ds['dateRat']);
+                            setlocale(LC_TIME, 'fr_FR.utf8');
+                            date_default_timezone_set('Europe/Paris');
+                            $formattedDateRat = strftime('Le %d %B %Y', $timestampRat);
+
+                            // Afficher le résultat
+                            echo "<p>{$formattedDateRat} - DS {$ds['typeRat']} - {$ds['dureeRat']} - Salle : {$ds['salleRat']}</p>";
+                            ?>
+                        <p><?= $ds['commentaireRat'];?></p>
                         <?php endif; ?>
+
                     </div>
                 </div>
             <?php endforeach; ?>
