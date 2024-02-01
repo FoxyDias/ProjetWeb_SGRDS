@@ -62,4 +62,9 @@ class RessourceModel extends Model
     {
         return $this->select('nomres, semres')->where('idres', $idres)->findAll();
     }
+
+    public function getByIdRes($idres)
+    {
+        return $this->where('idres', $idres)->first();
+    }
 }
