@@ -66,7 +66,7 @@
                         <!-- Si l'état est "En attente" -->
                         <?php if ($ds['etatRat'] == 'En attente') : ?>
                             <!-- Si nous sommes admins -->
-                            <?php if (session()->get('estAdmin')) : ?>
+                            <?php if (session()->get('estProf')) : ?>
                                 <div class="">
                                     <a href="<?= site_url('ajoutrattrapage/' . $ds['idDS']);?>" class="underline">Prévoir le rattrapage</a>
                                 </div>
